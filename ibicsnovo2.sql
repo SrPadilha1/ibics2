@@ -5,7 +5,7 @@
 -- Dumped from database version 9.5.7
 -- Dumped by pg_dump version 9.5.7
 
--- Started on 2019-07-11 10:16:19 BRT
+-- Started on 2019-09-16 17:42:02 BRT
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -39,7 +39,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- TOC entry 181 (class 1259 OID 33252)
+-- TOC entry 181 (class 1259 OID 25442)
 -- Name: avaliacao; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -53,7 +53,7 @@ CREATE TABLE avaliacao (
 ALTER TABLE avaliacao OWNER TO postgres;
 
 --
--- TOC entry 182 (class 1259 OID 33258)
+-- TOC entry 182 (class 1259 OID 25448)
 -- Name: comentario; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -69,7 +69,7 @@ CREATE TABLE comentario (
 ALTER TABLE comentario OWNER TO postgres;
 
 --
--- TOC entry 183 (class 1259 OID 33264)
+-- TOC entry 183 (class 1259 OID 25454)
 -- Name: denuncia; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -86,7 +86,7 @@ CREATE TABLE denuncia (
 ALTER TABLE denuncia OWNER TO postgres;
 
 --
--- TOC entry 184 (class 1259 OID 33270)
+-- TOC entry 184 (class 1259 OID 25460)
 -- Name: postagem; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -104,7 +104,7 @@ CREATE TABLE postagem (
 ALTER TABLE postagem OWNER TO postgres;
 
 --
--- TOC entry 185 (class 1259 OID 33276)
+-- TOC entry 185 (class 1259 OID 25466)
 -- Name: tema; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -118,7 +118,7 @@ CREATE TABLE tema (
 ALTER TABLE tema OWNER TO postgres;
 
 --
--- TOC entry 186 (class 1259 OID 33282)
+-- TOC entry 186 (class 1259 OID 25472)
 -- Name: usuario; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -127,8 +127,6 @@ CREATE TABLE usuario (
     nm_nome character varying,
     ds_senha character varying,
     nr_cpf numeric(11,0),
-    dt_nasc timestamp(6) with time zone,
-    nm_escolaridade character varying,
     cd_adm integer
 );
 
@@ -136,7 +134,7 @@ CREATE TABLE usuario (
 ALTER TABLE usuario OWNER TO postgres;
 
 --
--- TOC entry 2178 (class 0 OID 33252)
+-- TOC entry 2178 (class 0 OID 25442)
 -- Dependencies: 181
 -- Data for Name: avaliacao; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -146,7 +144,7 @@ COPY avaliacao (cod_aval, ds_email_aval, cod_post) FROM stdin;
 
 
 --
--- TOC entry 2179 (class 0 OID 33258)
+-- TOC entry 2179 (class 0 OID 25448)
 -- Dependencies: 182
 -- Data for Name: comentario; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -156,7 +154,7 @@ COPY comentario (cod_coment, ds_email_autor, cd_post, dt_data_hora, cd_conteudo)
 
 
 --
--- TOC entry 2180 (class 0 OID 33264)
+-- TOC entry 2180 (class 0 OID 25454)
 -- Dependencies: 183
 -- Data for Name: denuncia; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -166,7 +164,7 @@ COPY denuncia (cod_denuncia, ds_email_autor, cd_post, dt_data_hora, cod_tipo, nm
 
 
 --
--- TOC entry 2181 (class 0 OID 33270)
+-- TOC entry 2181 (class 0 OID 25460)
 -- Dependencies: 184
 -- Data for Name: postagem; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -176,7 +174,7 @@ COPY postagem (cd_post, ds_email_autor, dt_data_hora, nm_titulo, cd_conteudo, cd
 
 
 --
--- TOC entry 2182 (class 0 OID 33276)
+-- TOC entry 2182 (class 0 OID 25466)
 -- Dependencies: 185
 -- Data for Name: tema; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -186,17 +184,18 @@ COPY tema (cod_tema, cod_subtema, ds_descricao) FROM stdin;
 
 
 --
--- TOC entry 2183 (class 0 OID 33282)
+-- TOC entry 2183 (class 0 OID 25472)
 -- Dependencies: 186
 -- Data for Name: usuario; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY usuario (ds_email, nm_nome, ds_senha, nr_cpf, dt_nasc, nm_escolaridade, cd_adm) FROM stdin;
+COPY usuario (ds_email, nm_nome, ds_senha, nr_cpf, cd_adm) FROM stdin;
+zxcz	sdfx	cczcz	\N	\N
 \.
 
 
 --
--- TOC entry 2055 (class 2606 OID 33289)
+-- TOC entry 2055 (class 2606 OID 25479)
 -- Name: pk_cd_post; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -205,7 +204,7 @@ ALTER TABLE ONLY postagem
 
 
 --
--- TOC entry 2046 (class 2606 OID 33291)
+-- TOC entry 2046 (class 2606 OID 25481)
 -- Name: pk_cod_aval; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -214,7 +213,7 @@ ALTER TABLE ONLY avaliacao
 
 
 --
--- TOC entry 2053 (class 2606 OID 33293)
+-- TOC entry 2053 (class 2606 OID 25483)
 -- Name: pk_cod_denuncia; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -223,7 +222,7 @@ ALTER TABLE ONLY denuncia
 
 
 --
--- TOC entry 2049 (class 2606 OID 33295)
+-- TOC entry 2049 (class 2606 OID 25485)
 -- Name: pk_coment; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -232,7 +231,7 @@ ALTER TABLE ONLY comentario
 
 
 --
--- TOC entry 2057 (class 2606 OID 33297)
+-- TOC entry 2057 (class 2606 OID 25487)
 -- Name: pk_email; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -241,7 +240,7 @@ ALTER TABLE ONLY usuario
 
 
 --
--- TOC entry 2050 (class 1259 OID 33298)
+-- TOC entry 2050 (class 1259 OID 25488)
 -- Name: fk_cd_post; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -249,7 +248,7 @@ CREATE INDEX fk_cd_post ON denuncia USING btree (cd_post);
 
 
 --
--- TOC entry 2043 (class 1259 OID 33299)
+-- TOC entry 2043 (class 1259 OID 25489)
 -- Name: fk_email_aval; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -257,7 +256,7 @@ CREATE INDEX fk_email_aval ON avaliacao USING btree (ds_email_aval);
 
 
 --
--- TOC entry 2047 (class 1259 OID 33300)
+-- TOC entry 2047 (class 1259 OID 25490)
 -- Name: fki_cd_post; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -265,7 +264,7 @@ CREATE INDEX fki_cd_post ON comentario USING btree (cd_post);
 
 
 --
--- TOC entry 2051 (class 1259 OID 33301)
+-- TOC entry 2051 (class 1259 OID 25491)
 -- Name: fki_email_autor; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -273,7 +272,7 @@ CREATE INDEX fki_email_autor ON denuncia USING btree (ds_email_autor);
 
 
 --
--- TOC entry 2044 (class 1259 OID 33302)
+-- TOC entry 2044 (class 1259 OID 25492)
 -- Name: fki_email_aval; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -281,7 +280,7 @@ CREATE INDEX fki_email_aval ON avaliacao USING btree (ds_email_aval);
 
 
 --
--- TOC entry 2059 (class 2606 OID 33303)
+-- TOC entry 2059 (class 2606 OID 25493)
 -- Name: fk_cd_post; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -290,7 +289,7 @@ ALTER TABLE ONLY comentario
 
 
 --
--- TOC entry 2061 (class 2606 OID 33308)
+-- TOC entry 2061 (class 2606 OID 25498)
 -- Name: fk_cd_post; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -299,7 +298,7 @@ ALTER TABLE ONLY denuncia
 
 
 --
--- TOC entry 2060 (class 2606 OID 33313)
+-- TOC entry 2060 (class 2606 OID 25503)
 -- Name: fk_email_autor; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -308,7 +307,7 @@ ALTER TABLE ONLY comentario
 
 
 --
--- TOC entry 2063 (class 2606 OID 33318)
+-- TOC entry 2063 (class 2606 OID 25508)
 -- Name: fk_email_autor; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -317,7 +316,7 @@ ALTER TABLE ONLY postagem
 
 
 --
--- TOC entry 2062 (class 2606 OID 33323)
+-- TOC entry 2062 (class 2606 OID 25513)
 -- Name: fk_email_autor; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -326,7 +325,7 @@ ALTER TABLE ONLY denuncia
 
 
 --
--- TOC entry 2058 (class 2606 OID 33328)
+-- TOC entry 2058 (class 2606 OID 25518)
 -- Name: fk_email_aval; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -346,7 +345,7 @@ GRANT ALL ON SCHEMA public TO postgres;
 GRANT ALL ON SCHEMA public TO PUBLIC;
 
 
--- Completed on 2019-07-11 10:16:21 BRT
+-- Completed on 2019-09-16 17:42:03 BRT
 
 --
 -- PostgreSQL database dump complete

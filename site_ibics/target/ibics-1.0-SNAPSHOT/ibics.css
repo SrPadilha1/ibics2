@@ -117,7 +117,7 @@ span.psw {
        width: 100%;
     }
 }
-}
+
 
 /* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {
