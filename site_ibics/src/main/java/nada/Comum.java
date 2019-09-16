@@ -9,9 +9,8 @@ package nada;
  *
  * @author aluno
  */
-public class Concreta extends Abstrato {
-    
-    
-    String nome,cpf,email,senha;
-    
+public abstract class Comum {
+     
+   String nome,cpf,email,senha;
+   
 }

@@ -9,8 +9,9 @@ package nada;
  *
  * @author aluno
  */
-public class Abstrato {
-     
-   String nome,cpf,email,senha;
-   
+public class Admin extends Comum {
+    
+    
+    String nome,cpf,email,senha;
+    
 }
