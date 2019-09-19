@@ -6,16 +6,22 @@
 package classes;
 
 import java.io.Serializable;
+import java.util.Collection;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -30,6 +36,16 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Usuario.findByNmNome", query = "SELECT u FROM Usuario u WHERE u.nmNome = :nmNome")
     , @NamedQuery(name = "Usuario.findByDsSenha", query = "SELECT u FROM Usuario u WHERE u.dsSenha = :dsSenha")})
 public class Usuario implements Serializable {
+
+    @Column(name = "nr_cpf")
+    private Long nrCpf;
+    @Column(name = "dt_nasc")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dtNasc;
+    @Column(name = "cd_adm")
+    private Integer cdAdm;
+    @OneToMany(mappedBy = "dsEmailAutor")
+    private Collection<Postagem> postagemCollection;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -99,6 +115,39 @@ public class Usuario implements Serializable {
     @Override
     public String toString() {
         return "classes.Usuario[ dsEmail=" + dsEmail + " ]";
+    }
+
+    public Long getNrCpf() {
+        return nrCpf;
+    }
+
+    public void setNrCpf(Long nrCpf) {
+        this.nrCpf = nrCpf;
+    }
+
+    public Date getDtNasc() {
+        return dtNasc;
+    }
+
+    public void setDtNasc(Date dtNasc) {
+        this.dtNasc = dtNasc;
+    }
+
+    public Integer getCdAdm() {
+        return cdAdm;
+    }
+
+    public void setCdAdm(Integer cdAdm) {
+        this.cdAdm = cdAdm;
+    }
+
+    @XmlTransient
+    public Collection<Postagem> getPostagemCollection() {
+        return postagemCollection;
+    }
+
+    public void setPostagemCollection(Collection<Postagem> postagemCollection) {
+        this.postagemCollection = postagemCollection;
     }
     
 }
