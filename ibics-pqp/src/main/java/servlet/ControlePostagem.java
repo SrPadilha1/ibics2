@@ -1,5 +1,6 @@
 package servlet;
 
+import classes.Comentario;
 import classes.Postagem;
 import java.util.List;
 import org.hibernate.Session;
@@ -9,18 +10,15 @@ import util.HibernateUtil;
 public class ControlePostagem {
 
     //Função de salvar/atualizar um postagem
-    public static boolean salvar(Postagem postagem){
-        try{
-            Session sessionRecheio;
-            sessionRecheio = HibernateUtil.getSession();
-            Transaction tr = sessionRecheio.beginTransaction();
-            sessionRecheio.saveOrUpdate(postagem);
-            tr.commit();
-            return true;
-        }
-        catch(Exception ex){
-            return false;
-        }        
+public static List<Comentario> listarc()
+    {
+        Session sessionRecheio;
+        sessionRecheio = HibernateUtil.getSession();
+        Transaction tr = sessionRecheio.beginTransaction();
+        String hql = "from Comentario";
+        List<Comentario> listac = (List)sessionRecheio.createQuery(hql).list();
+        tr.commit();
+        return listac;
     }
     
     //Localiza um postagem pelo id

@@ -10,14 +10,26 @@
         <title>Crud</title>
     </head>
     <body>
-        <h1>Lista dos usuários</h1>
         <%
             List<Postagem> lista = ControlePostagem.listar();
-            request.setAttribute( "postagens", lista );
+            request.setAttribute("postagens", lista);
         %>
-        <display:table name="postagens">
-            <display:column property="conteudo" title="Postagem"/>
-            <display:setProperty name="basic.msg.empty_list" value="Sem Postagens" />
-        </display:table>
+        <div align="center" style="background: #1abc9c">
+            <display:table name="postagens">
+                <display:column property="conteudo" title="Postagem"/>
+                <display:setProperty name="basic.msg.empty_list" value="Sem Postagens" />
+            </display:table>
+        </div>
+        <%
+            List<Comentario> listac = ControlePostagem.listarc();
+            request.setAttribute("comentarios", listac);
+        %>
+        <br>
+        <div align="center" style="background: #1abc9c">
+            <display:table name="comentarios">
+                <display:column property="conteudo" title="Comentarios"/>
+                <display:setProperty name="basic.msg.empty_list" value="Sem Comentarios" />
+            </display:table>
+        </div>
     </body>
 </html>

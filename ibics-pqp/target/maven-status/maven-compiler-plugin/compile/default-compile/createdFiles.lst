@@ -1,3 +1,5 @@
 servlet/ServletPostagem.class
+classes/Comentario.class
+servlet/ControlePostagem.class
 classes/Postagem.class
 util/HibernateUtil.class
