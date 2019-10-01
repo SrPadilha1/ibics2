@@ -2,6 +2,7 @@ package util;
 
 import classes.Comentario;
 import classes.Postagem;
+import classes.Usuario;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
@@ -30,6 +31,7 @@ public class HibernateUtil {
         AnnotationConfiguration cfg = new AnnotationConfiguration();
         cfg.configure();
         cfg.addAnnotatedClass(Postagem.class);
+        cfg.addAnnotatedClass(Usuario.class);
         cfg.addAnnotatedClass(Comentario.class);
         factory = cfg.buildSessionFactory();
     }

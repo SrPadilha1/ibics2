@@ -4,9 +4,25 @@
         <servlet-name>ServletPostagem</servlet-name>
         <servlet-class>servlet.ServletPostagem</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletUsuario</servlet-name>
+        <servlet-class>servlet.ServletUsuario</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletLogin</servlet-name>
+        <servlet-class>servlet.ServletLogin</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletPostagem</servlet-name>
         <url-pattern>/ServletPostagem</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletUsuario</servlet-name>
+        <url-pattern>/ServletUsuario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletLogin</servlet-name>
+        <url-pattern>/ServletLogin</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
