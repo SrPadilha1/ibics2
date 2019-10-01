@@ -1,0 +1,5 @@
+servlet/ServletPostagem.class
+classes/Usuario.class
+classes/Postagem.class
+util/HibernateUtil.class
+servlet/ServletCadastro.class
