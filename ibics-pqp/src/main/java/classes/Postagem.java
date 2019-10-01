@@ -6,18 +6,13 @@
 package classes;
 
 import java.io.Serializable;
-import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -31,12 +26,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Postagem.findAll", query = "SELECT p FROM Postagem p")
-    , @NamedQuery(name = "Postagem.findByCdPost", query = "SELECT p FROM Postagem p WHERE p.cdPost = :cdPost")
-    , @NamedQuery(name = "Postagem.findByDtDataHora", query = "SELECT p FROM Postagem p WHERE p.dtDataHora = :dtDataHora")
-    , @NamedQuery(name = "Postagem.findByNmTitulo", query = "SELECT p FROM Postagem p WHERE p.nmTitulo = :nmTitulo")
-    , @NamedQuery(name = "Postagem.findByCdConteudo", query = "SELECT p FROM Postagem p WHERE p.cdConteudo = :cdConteudo")
-    , @NamedQuery(name = "Postagem.findByCdRecomendado", query = "SELECT p FROM Postagem p WHERE p.cdRecomendado = :cdRecomendado")
-    , @NamedQuery(name = "Postagem.findByCdBloqueada", query = "SELECT p FROM Postagem p WHERE p.cdBloqueada = :cdBloqueada")})
+    , @NamedQuery(name = "Postagem.findByConteudo", query = "SELECT p FROM Postagem p WHERE p.conteudo = :conteudo")})
 public class Postagem implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -44,93 +34,28 @@ public class Postagem implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 2147483647)
-    @Column(name = "cd_post")
-    private String cdPost;
-    @Column(name = "dt_data_hora")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date dtDataHora;
-    @Size(max = 2147483647)
-    @Column(name = "nm_titulo")
-    private String nmTitulo;
-    @Size(max = 2147483647)
-    @Column(name = "cd_conteudo")
-    private String cdConteudo;
-    @Size(max = 2147483647)
-    @Column(name = "cd_recomendado")
-    private String cdRecomendado;
-    @Column(name = "cd_bloqueada")
-    private Integer cdBloqueada;
-    @JoinColumn(name = "ds_email_autor", referencedColumnName = "ds_email")
-    @ManyToOne
-    private Usuario dsEmailAutor;
+    @Column(name = "conteudo")
+    private String conteudo;
 
     public Postagem() {
     }
 
-    public Postagem(String cdPost) {
-        this.cdPost = cdPost;
+    public Postagem(String conteudo) {
+        this.conteudo = conteudo;
     }
 
-    public String getCdPost() {
-        return cdPost;
+    public String getConteudo() {
+        return conteudo;
     }
 
-    public void setCdPost(String cdPost) {
-        this.cdPost = cdPost;
-    }
-
-    public Date getDtDataHora() {
-        return dtDataHora;
-    }
-
-    public void setDtDataHora(Date dtDataHora) {
-        this.dtDataHora = dtDataHora;
-    }
-
-    public String getNmTitulo() {
-        return nmTitulo;
-    }
-
-    public void setNmTitulo(String nmTitulo) {
-        this.nmTitulo = nmTitulo;
-    }
-
-    public String getCdConteudo() {
-        return cdConteudo;
-    }
-
-    public void setCdConteudo(String cdConteudo) {
-        this.cdConteudo = cdConteudo;
-    }
-
-    public String getCdRecomendado() {
-        return cdRecomendado;
-    }
-
-    public void setCdRecomendado(String cdRecomendado) {
-        this.cdRecomendado = cdRecomendado;
-    }
-
-    public Integer getCdBloqueada() {
-        return cdBloqueada;
-    }
-
-    public void setCdBloqueada(Integer cdBloqueada) {
-        this.cdBloqueada = cdBloqueada;
-    }
-
-    public Usuario getDsEmailAutor() {
-        return dsEmailAutor;
-    }
-
-    public void setDsEmailAutor(Usuario dsEmailAutor) {
-        this.dsEmailAutor = dsEmailAutor;
+    public void setConteudo(String conteudo) {
+        this.conteudo = conteudo;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (cdPost != null ? cdPost.hashCode() : 0);
+        hash += (conteudo != null ? conteudo.hashCode() : 0);
         return hash;
     }
 
@@ -141,7 +66,7 @@ public class Postagem implements Serializable {
             return false;
         }
         Postagem other = (Postagem) object;
-        if ((this.cdPost == null && other.cdPost != null) || (this.cdPost != null && !this.cdPost.equals(other.cdPost))) {
+        if ((this.conteudo == null && other.conteudo != null) || (this.conteudo != null && !this.conteudo.equals(other.conteudo))) {
             return false;
         }
         return true;
@@ -149,7 +74,7 @@ public class Postagem implements Serializable {
 
     @Override
     public String toString() {
-        return "classes.Postagem[ cdPost=" + cdPost + " ]";
+        return "classes.Postagem[ conteudo=" + conteudo + " ]";
     }
     
 }

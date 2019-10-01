@@ -5,12 +5,16 @@
  */
 package servlet;
 
+import classes.Postagem;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import util.HibernateUtil;
 
 /**
  *
@@ -70,7 +74,14 @@ public class ServletPostagem extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        Postagem postagem = new Postagem();
+        postagem.setConteudo(request.getParameter("conteudo"));
+            Session sessionRecheio;
+            sessionRecheio = HibernateUtil.getSession();
+            Transaction tr = sessionRecheio.beginTransaction();
+            sessionRecheio.saveOrUpdate(postagem);
+tr.commit();
+         response.sendRedirect("postagem.html");
     }
 
     /**
