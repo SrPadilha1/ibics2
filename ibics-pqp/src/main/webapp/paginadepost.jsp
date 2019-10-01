@@ -45,6 +45,7 @@
             <div align="center">
                 <display:table name="postagens">
                     <display:column property="conteudo" title=""/>
+                    <input type="text" name="coment">
                     <display:setProperty name="basic.msg.empty_list" value="Sem Postagens" />
                 </display:table>
             </div>
@@ -53,14 +54,7 @@
             <p class="w3-right"><button class="w3-button w3-black" onclick="myFunction('demo3')"><b>Comentários </b> <span class="w3-tag w3-white"></span></button></p>
             <p class="w3-clear"></p>
 
-            <p class="w3-left"><button class="w3-button w3-white w3-border" onclick="likeFunction(this)"><b><i class="fa fa-thumbs-up"></i> Like</b></button></p>
-            <p class="w3-right"><button class="w3-button w3-black" onclick="myFunction('demo2')"><b>Comentários</b> <span class="w3-tag w3-white"></span></button></p>
-            <p class="w3-clear"></p>
-
-
-            <p class="w3-left"><button class="w3-button w3-white w3-border" onclick="likeFunction(this)"><b><i class="fa fa-thumbs-up"></i> Like</b></button></p>
-            <p class="w3-right"><button class="w3-button w3-black" onclick="myFunction('demo3')"><b>Comentários </b> <span class="w3-tag w3-white"></span></button></p>
-            <p class="w3-clear"></p>
+            
 
             <footer class="w3-container w3-green" style="padding:32px">
                 <a href="#" class="w3-button w3-black w3-padding-large w3-margin-bottom"><i class="fa fa-arrow-up w3-margin-right"></i>Inicio</a>

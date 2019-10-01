@@ -21,7 +21,7 @@ public static List<Comentario> listarc()
         return listac;
     }
     
-    //Localiza um postagem pelo id
+    //Localiza uma postagem pelo id
     public static Postagem buscar(Integer id)
     {
         String idPostagem = id.toString();
