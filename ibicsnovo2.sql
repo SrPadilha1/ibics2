@@ -1,4 +1,4 @@
---
+﻿--
 -- PostgreSQL database dump
 --
 
@@ -139,8 +139,6 @@ ALTER TABLE usuario OWNER TO postgres;
 -- Data for Name: avaliacao; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY avaliacao (cod_aval, ds_email_aval, cod_post) FROM stdin;
-\.
 
 
 --
@@ -149,8 +147,6 @@ COPY avaliacao (cod_aval, ds_email_aval, cod_post) FROM stdin;
 -- Data for Name: comentario; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY comentario (cod_coment, ds_email_autor, cd_post, dt_data_hora, cd_conteudo) FROM stdin;
-\.
 
 
 --
@@ -159,8 +155,7 @@ COPY comentario (cod_coment, ds_email_autor, cd_post, dt_data_hora, cd_conteudo)
 -- Data for Name: denuncia; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY denuncia (cod_denuncia, ds_email_autor, cd_post, dt_data_hora, cod_tipo, nm_descricao) FROM stdin;
-\.
+
 
 
 --
@@ -169,8 +164,6 @@ COPY denuncia (cod_denuncia, ds_email_autor, cd_post, dt_data_hora, cod_tipo, nm
 -- Data for Name: postagem; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY postagem (cd_post, ds_email_autor, dt_data_hora, nm_titulo, cd_conteudo, cd_recomendado, cd_bloqueada) FROM stdin;
-\.
 
 
 --
@@ -179,8 +172,6 @@ COPY postagem (cd_post, ds_email_autor, dt_data_hora, nm_titulo, cd_conteudo, cd
 -- Data for Name: tema; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY tema (cod_tema, cod_subtema, ds_descricao) FROM stdin;
-\.
 
 
 --
@@ -189,9 +180,7 @@ COPY tema (cod_tema, cod_subtema, ds_descricao) FROM stdin;
 -- Data for Name: usuario; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY usuario (ds_email, nm_nome, ds_senha, nr_cpf, cd_adm) FROM stdin;
-zxcz	sdfx	cczcz	\N	\N
-\.
+
 
 
 --
