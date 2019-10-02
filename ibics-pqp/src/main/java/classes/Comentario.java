@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Comentario.findAll", query = "SELECT c FROM Comentario c")
-    , @NamedQuery(name = "Comentario.findByConteudo", query = "SELECT c FROM Comentario c WHERE c.conteudo = :conteudo")})
+    , @NamedQuery(name = "Comentario.findByComentario", query = "SELECT c FROM Comentario c WHERE c.comentario = :comentario")})
 public class Comentario implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -34,28 +34,28 @@ public class Comentario implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 2147483647)
-    @Column(name = "conteudo")
-    private String conteudo;
+    @Column(name = "comentario")
+    private String comentario;
 
     public Comentario() {
     }
 
-    public Comentario(String conteudo) {
-        this.conteudo = conteudo;
+    public Comentario(String comentario) {
+        this.comentario = comentario;
     }
 
-    public String getConteudo() {
-        return conteudo;
+    public String getComentario() {
+        return comentario;
     }
 
-    public void setConteudo(String conteudo) {
-        this.conteudo = conteudo;
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (conteudo != null ? conteudo.hashCode() : 0);
+        hash += (comentario != null ? comentario.hashCode() : 0);
         return hash;
     }
 
@@ -66,7 +66,7 @@ public class Comentario implements Serializable {
             return false;
         }
         Comentario other = (Comentario) object;
-        if ((this.conteudo == null && other.conteudo != null) || (this.conteudo != null && !this.conteudo.equals(other.conteudo))) {
+        if ((this.comentario == null && other.comentario != null) || (this.comentario != null && !this.comentario.equals(other.comentario))) {
             return false;
         }
         return true;
@@ -74,7 +74,7 @@ public class Comentario implements Serializable {
 
     @Override
     public String toString() {
-        return "classes.Comentario[ conteudo=" + conteudo + " ]";
+        return "classes.Comentario[ comentario=" + comentario + " ]";
     }
     
 }

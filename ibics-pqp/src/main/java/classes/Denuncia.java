@@ -10,5 +10,9 @@ package classes;
  * @author aluno
  */
 public class Denuncia {
+
+    public void setDenuncia(String parameter) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

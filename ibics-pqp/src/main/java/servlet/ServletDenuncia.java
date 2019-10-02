@@ -5,6 +5,7 @@
  */
 package servlet;
 
+import classes.Denuncia;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -12,6 +13,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import util.HibernateUtil;
 
 /**
  *
@@ -72,6 +76,16 @@ public class ServletDenuncia extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        Denuncia  denuncia  = new Denuncia ();
+       denuncia.setDenuncia(request.getParameter("denuncia"));
+        Session sessionRecheio;
+        sessionRecheio = HibernateUtil.getSession();
+        Transaction tr = sessionRecheio.beginTransaction();
+        sessionRecheio.saveOrUpdate( denuncia );
+        tr.commit();
+        
+        response.sendRedirect("pgdenuncia.html");
         processRequest(request, response);
     }
 
@@ -80,9 +94,5 @@ public class ServletDenuncia extends HttpServlet {
      *
      * @return a String containing servlet description
      */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
-
+    
 }

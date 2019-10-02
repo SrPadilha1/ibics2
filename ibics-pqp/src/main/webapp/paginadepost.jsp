@@ -49,9 +49,10 @@
                     <display:setProperty name="basic.msg.empty_list" value="Sem Postagens" />
                 </display:table>
             </div>
+            <br><br><br>
             
             <div align="center">
-                <display:table name="Comentários">
+                <display:table name="comentarios">
                     <display:column property="conteudo" title=""/>
                     <input type="text" name="coment">
                     <display:setProperty name="basic.msg.empty_list" value="Sem comentários" />
