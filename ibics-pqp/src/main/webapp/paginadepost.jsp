@@ -53,7 +53,7 @@
                 </display:table>
             </div>
             <br><br><br>
-
+            <center> <h3>Comentários</h3>     </center>
             <div align="center">
                 <display:table name="comentarios">
                     <display:column property="comentario" title=""/>
