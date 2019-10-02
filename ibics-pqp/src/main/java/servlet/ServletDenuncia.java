@@ -78,11 +78,11 @@ public class ServletDenuncia extends HttpServlet {
             throws ServletException, IOException {
         
         Denuncia  denuncia  = new Denuncia ();
-       denuncia.setDenuncia(request.getParameter("denuncia"));
+        denuncia.setConteudod(request.getParameter("conteudod"));
         Session sessionRecheio;
         sessionRecheio = HibernateUtil.getSession();
         Transaction tr = sessionRecheio.beginTransaction();
-        sessionRecheio.saveOrUpdate( denuncia );
+        sessionRecheio.saveOrUpdate(denuncia);
         tr.commit();
         
         response.sendRedirect("pgdenuncia.html");

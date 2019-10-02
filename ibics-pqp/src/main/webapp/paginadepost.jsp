@@ -41,6 +41,9 @@
             <%
                 List<Postagem> lista = ControlePostagem.listar();
                 request.setAttribute("postagens", lista);
+
+                List<Comentario> listac = ControlePostagem.listarc();
+                request.setAttribute("comentarios", listac);
             %>
             <div align="center">
                 <display:table name="postagens">
@@ -50,29 +53,29 @@
                 </display:table>
             </div>
             <br><br><br>
-            
+
             <div align="center">
                 <display:table name="comentarios">
-                    <display:column property="conteudo" title=""/>
+                    <display:column property="comentario" title=""/>
                     <input type="text" name="coment">
                     <display:setProperty name="basic.msg.empty_list" value="Sem comentários" />
                 </display:table>
             </div>
-            
-            
-            
-            
-            
-            
+
+
+
+
+
+
             <pre> <a href="comentar.html" > <button class="w3-button w3-black"> <b>Comentários</b></button></a> </pre>
             <p class="w3-left"><button class="w3-button w3-white w3-border" onclick="likeFunction(this)"><b><i class="fa fa-thumbs-up"></i> Like</b></button></p>
             <pre> <a href="pgdenuncia.html" > <button class="w3-button w3-black"> <b>Denuncia</b></button></a> </pre>
             <p class="w3-clear"></p>
-            
-            
+
+
 
             <footer class="w3-container w3-green" style="padding:32px">
-                 <a href="#" class="w3-button w3-black w3-padding-large w3-margin-bottom"><i class="fa fa-arrow-up w3-margin-right"></i>Inicio</a>
+                <a href="#" class="w3-button w3-black w3-padding-large w3-margin-bottom"><i class="fa fa-arrow-up w3-margin-right"></i>Inicio</a>
 
             </footer>
 

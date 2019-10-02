@@ -25,9 +25,9 @@
             request.setAttribute("comentarios", listac);
         %>
         <br>
-        <div align="center" style="background: #1abc9c">
+        <div align="center" style="background: #4CAF50 ">
             <display:table name="comentarios">
-                <display:column property="conteudo" title="Comentarios"/>
+                <display:column property="comentario" title="Comentarios"/>
                 <display:setProperty name="basic.msg.empty_list" value="Sem Comentarios" />
             </display:table>
         </div>

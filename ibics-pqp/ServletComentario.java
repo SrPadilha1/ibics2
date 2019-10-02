@@ -12,6 +12,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.transaction.Transaction;
+import org.hibernate.Session;
+import util.HibernateUtil;
 
 /**
  *
@@ -36,7 +39,7 @@ public class ServletComentario extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ServletComentario</title>");            
+            out.println("<title>Servlet ServletComentario</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet ServletComentario at " + request.getContextPath() + "</h1>");
@@ -71,30 +74,22 @@ public class ServletComentario extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
-   
-    Comentario comentario = new Comentario();
-        comentario.setConteudo(request.getParameter("conteudo"));
+
+        Comentario comentario = new Comentario();
+        comentario.setComentario(request.getParameter("comentario"));
         Session sessionRecheio;
         sessionRecheio = HibernateUtil.getSession();
-        Transaction tr = sessionRecheio.beginTransaction();
-        sessionRecheio.saveOrUpdate(postagem);
+        Transaction tr = (Transaction) sessionRecheio.beginTransaction();
+        sessionRecheio.saveOrUpdate(comentario);
         tr.commit();
+        
         response.sendRedirect("paginadepost.jsp");
+        processRequest(request, response);
     }
-    }
-    }
-    
-   
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
-
 }
+
+/**
+ * Returns a short description of the servlet.
+ *
+ * @return a String containing servlet description
+ */
