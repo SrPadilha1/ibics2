@@ -28,7 +28,7 @@ public class ServletLogin extends HttpServlet {
         } else {
             HttpSession httpSession = request.getSession();
             httpSession.setAttribute("UsuarioLogado", usuario);
-            response.sendRedirect("sucesso.html");
+            response.sendRedirect("paginadepost.jsp");
 
         }
     }

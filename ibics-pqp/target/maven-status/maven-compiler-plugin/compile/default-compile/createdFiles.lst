@@ -1,9 +1,9 @@
-servlet/ServletPostagem.class
 classes/Comentario.class
 servlet/ControlePostagem.class
-classes/Usuario.class
 classes/Postagem.class
 servlet/ServletLogin.class
+servlet/ServletUsuario.class
+servlet/ServletPostagem.class
+classes/Usuario.class
 util/HibernateUtil.class
 servlet/UsuarioControle.class
-servlet/ServletUsuario.class

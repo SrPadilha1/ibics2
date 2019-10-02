@@ -12,6 +12,10 @@
         <servlet-name>ServletLogin</servlet-name>
         <servlet-class>servlet.ServletLogin</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletComentario</servlet-name>
+        <servlet-class>servlet.ServletComentario</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletPostagem</servlet-name>
         <url-pattern>/ServletPostagem</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>ServletLogin</servlet-name>
         <url-pattern>/ServletLogin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletComentario</servlet-name>
+        <url-pattern>/ServletComentario</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

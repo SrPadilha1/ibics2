@@ -2,8 +2,10 @@
 /home/aluno/ibics2/ibics-pqp/src/main/java/servlet/UsuarioControle.java
 /home/aluno/ibics2/ibics-pqp/src/main/java/util/HibernateUtil.java
 /home/aluno/ibics2/ibics-pqp/src/main/java/servlet/ServletPostagem.java
+/home/aluno/ibics2/ibics-pqp/src/main/java/servlet/ServletDenuncia.java
 /home/aluno/ibics2/ibics-pqp/src/main/java/servlet/ServletUsuario.java
 /home/aluno/ibics2/ibics-pqp/src/main/java/classes/Postagem.java
 /home/aluno/ibics2/ibics-pqp/src/main/java/servlet/ServletLogin.java
 /home/aluno/ibics2/ibics-pqp/src/main/java/classes/Usuario.java
 /home/aluno/ibics2/ibics-pqp/src/main/java/classes/Comentario.java
+/home/aluno/ibics2/ibics-pqp/src/main/java/classes/Denucia.java

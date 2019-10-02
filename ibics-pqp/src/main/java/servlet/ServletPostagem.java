@@ -39,7 +39,7 @@ public class ServletPostagem extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ServletPostagem</title>");            
+            out.println("<title>Servlet ServletPostagem</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet ServletPostagem at " + request.getContextPath() + "</h1>");
@@ -76,12 +76,12 @@ public class ServletPostagem extends HttpServlet {
             throws ServletException, IOException {
         Postagem postagem = new Postagem();
         postagem.setConteudo(request.getParameter("conteudo"));
-            Session sessionRecheio;
-            sessionRecheio = HibernateUtil.getSession();
-            Transaction tr = sessionRecheio.beginTransaction();
-            sessionRecheio.saveOrUpdate(postagem);
-tr.commit();
-         response.sendRedirect("postagem.html");
+        Session sessionRecheio;
+        sessionRecheio = HibernateUtil.getSession();
+        Transaction tr = sessionRecheio.beginTransaction();
+        sessionRecheio.saveOrUpdate(postagem);
+        tr.commit();
+        response.sendRedirect("paginadepost.jsp");
     }
 
     /**
