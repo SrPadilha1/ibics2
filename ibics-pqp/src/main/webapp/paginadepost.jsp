@@ -25,7 +25,7 @@
     <body class="w3-light-grey">
         <header class="w3-container w3-center w3-padding-48 w3-green">
             <h1 class="w3-xxxlarge"><b>IBICS</b></h1>
-            <h6>Bem-vido ao IBICS <span class="w3-tag">I believe i can study</span></h6>
+            <h6>Bem-vido ao IBICS <span class="w3-tag">I believe I can study</span></h6>
         </header>
     </style>
 <body>
@@ -63,14 +63,11 @@
             </div>
 
 
-
-
-
-
-            <pre> <a href="comentar.html" > <button class="w3-button w3-black"> <b>Comentários</b></button></a> </pre>
-            <p class="w3-left"><button class="w3-button w3-white w3-border" onclick="likeFunction(this)"><b><i class="fa fa-thumbs-up"></i> Like</b></button></p>
-            <pre> <a href="pgdenuncia.html" > <button class="w3-button w3-black"> <b>Denuncia</b></button></a> </pre>
+            <a href="comentar.html" > <button class="w3-button w3-black"> <b>Comentários</b></button></a>
+            <button class="w3-button w3-white w3-border" onclick="likeFunction(this)"><b><i class="fa fa-thumbs-up"></i> Like</b></button>
+            <a href="pgdenuncia.html" > <button class="w3-button w3-black"> <b>Denuncia</b></button></a> 
             <p class="w3-clear"></p>
+            
 
 
 
