@@ -65,7 +65,7 @@
 
             <a href="comentar.html" > <button class="w3-button w3-black"> <b>Comentários</b></button></a>
             <button class="w3-button w3-white w3-border" onclick="likeFunction(this)"><b><i class="fa fa-thumbs-up"></i> Like</b></button>
-            <a href="pgdenuncia.html" > <button class="w3-button w3-black"> <b>Denuncia</b></button></a> 
+            <a href="pgdenuncia.html" > <button class="w3-button w3-black"> <b>Denúncia</b></button></a> 
             <p class="w3-clear"></p>
             
 
