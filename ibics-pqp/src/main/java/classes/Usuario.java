@@ -7,6 +7,7 @@ package classes;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,6 +15,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -35,6 +37,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Usuario.findByNrCpf", query = "SELECT u FROM Usuario u WHERE u.nrCpf = :nrCpf")
     , @NamedQuery(name = "Usuario.findById", query = "SELECT u FROM Usuario u WHERE u.id = :id")})
 public class Usuario implements Serializable {
+
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "usuario")
+    private Postagem postagem;
 
     private static final long serialVersionUID = 1L;
     @Basic(optional = false)
@@ -133,6 +138,14 @@ public class Usuario implements Serializable {
     @Override
     public String toString() {
         return "classes.Usuario[ id=" + id + " ]";
+    }
+
+    public Postagem getPostagem() {
+        return postagem;
+    }
+
+    public void setPostagem(Postagem postagem) {
+        this.postagem = postagem;
     }
     
 }

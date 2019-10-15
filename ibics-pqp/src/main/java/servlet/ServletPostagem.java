@@ -7,11 +7,14 @@ package servlet;
 
 import classes.Postagem;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
+import org.apache.commons.io.IOUtils;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import util.HibernateUtil;
@@ -74,8 +77,18 @@ public class ServletPostagem extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String idtext = request.getParameter("ppid");
+        Part filePart = request.getPart("foto");
+        InputStream inputStream = filePart.getInputStream();
         Postagem postagem = new Postagem();
+
+        if(!idtext.isEmpty()){
+            Integer id = Integer.parseInt(idtext);
+            postagem.setId(id);
+        }
         postagem.setConteudo(request.getParameter("conteudo"));
+        postagem.setFoto(IOUtils.toByteArray(inputStream));       
+        postagem.setExtensao(filePart.getContentType());
         Session sessionRecheio;
         sessionRecheio = HibernateUtil.getSession();
         Transaction tr = sessionRecheio.beginTransaction();

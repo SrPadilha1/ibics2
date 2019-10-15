@@ -1,3 +1,5 @@
+<%@page import="java.util.Base64"%>
+<%@page import="java.util.Iterator"%>
 <%@page import="java.util.List"%>
 <%@page import="servlet.ControlePostagem"%>
 <%@page import="classes.Postagem"%>
@@ -10,7 +12,6 @@
     <head>
         <title>IBICSS</title>
         <meta charset="UTF-8">
-
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="ibics.css">
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -22,6 +23,9 @@
             body {font-family: "Open Sans"}
 
         </style>
+        <%
+            Usuario usuario = (Usuario) session.getAttribute("UsuarioLogado");
+        %>
     <body class="w3-light-grey">
         <header class="w3-container w3-center w3-padding-48 w3-green">
             <h1 class="w3-xxxlarge"><b>IBICS</b></h1>
@@ -36,23 +40,26 @@
                 <h3>Postagens</h3>          
             </div>
 
-            <h3><a href="postagem.html"><button> Fazer postagem</button></a></h3>
+            <h3><a href="postagem.jsp"><button> Fazer postagem</button></a></h3>
 
             <%
                 List<Postagem> lista = ControlePostagem.listar();
-                request.setAttribute("postagens", lista);
-
-                List<Comentario> listac = ControlePostagem.listarc();
-                request.setAttribute("comentarios", listac);
+                request.setAttribute("postagem", lista);
+                for (Iterator it = lista.iterator(); it.hasNext();) {
+                    Postagem p = (Postagem) it.next();
+                    String codigo = p.getId().toString();
+                    byte[] imagem = p.getFoto();
+                    String foto = Base64.getEncoder().encodeToString(imagem);
             %>
             <div align="center">
-                <display:table name="postagens">
-                    <display:column property="conteudo" title=""/>
-                    <input type="text" name="coment">
-                    <display:setProperty name="basic.msg.empty_list" value="Sem Postagens" />
-                </display:table>
+                <a>Usuario: <%=usuario.getNmNome()%></a>
+                <a>Postagem: <%=p.getConteudo()%></a>
+                <img src="data:image/png;image/jpg;base64,<%=foto%>" style="max-width: 100%; max-height: 100%;"/>
+                
             </div>
+            <%}%>
             <br><br><br>
+            
             <center> <h3>Comentários</h3>     </center>
             <div align="center">
                 <display:table name="comentarios">
@@ -67,7 +74,7 @@
             <button class="w3-button w3-white w3-border" onclick="likeFunction(this)"><b><i class="fa fa-thumbs-up"></i> Like</b></button>
             <a href="pgdenuncia.html" > <button class="w3-button w3-black"> <b>Denúncia</b></button></a> 
             <p class="w3-clear"></p>
-            
+
 
 
 
