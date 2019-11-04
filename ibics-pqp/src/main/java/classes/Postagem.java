@@ -6,6 +6,7 @@
 package classes;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,12 +14,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -33,45 +35,46 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Postagem.findAll", query = "SELECT p FROM Postagem p")
     , @NamedQuery(name = "Postagem.findByConteudo", query = "SELECT p FROM Postagem p WHERE p.conteudo = :conteudo")
-    , @NamedQuery(name = "Postagem.findById", query = "SELECT p FROM Postagem p WHERE p.id = :id")
-    , @NamedQuery(name = "Postagem.findByExtensao", query = "SELECT p FROM Postagem p WHERE p.extensao = :extensao")})
+    , @NamedQuery(name = "Postagem.findByTitulo", query = "SELECT p FROM Postagem p WHERE p.titulo = :titulo")
+    , @NamedQuery(name = "Postagem.findByDataHora", query = "SELECT p FROM Postagem p WHERE p.dataHora = :dataHora")
+    , @NamedQuery(name = "Postagem.findByIdPostagem", query = "SELECT p FROM Postagem p WHERE p.idPostagem = :idPostagem")})
 public class Postagem implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Basic(optional = false)
-    @NotNull
+    @Size(min = 1, max = 2147483647)
     @Column(name = "conteudo")
     private String conteudo;
-
+    
+    @Size(max = 2147483647)
+    @Column(name = "titulo")
+    private String titulo;
+    
+    @Column(name = "data_hora")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dataHora;
+    
     @Id
     @Basic(optional = false)
     @NotNull
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "meugerador")
-    @SequenceGenerator(name = "meugerador", sequenceName = "sq_postagem")
-    @Column(name = "id")
-    private Integer id;
-
-    // @Lob
-    @Column(name = "foto")
-    private byte[] foto;
-
+    @SequenceGenerator(name="meugerador", sequenceName = "sq_postagem")
+    @Column(name = "id_postagem")
+    private Integer idPostagem;
     
-    @Column(name = "extensao")
-    private String extensao;
-
-    @JoinColumn(name = "id", referencedColumnName = "id", insertable = false, updatable = false)
-    @OneToOne(optional = false)
-    private Usuario usuario;
+    @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
+    @ManyToOne(optional = false)
+    private Usuario idUsuario;
 
     public Postagem() {
     }
 
-    public Postagem(Integer id) {
-        this.id = id;
+    public Postagem(Integer idPostagem) {
+        this.idPostagem = idPostagem;
     }
 
-    public Postagem(Integer id, String conteudo) {
-        this.id = id;
+    public Postagem(Integer idPostagem, String conteudo) {
+        this.idPostagem = idPostagem;
         this.conteudo = conteudo;
     }
 
@@ -83,42 +86,42 @@ public class Postagem implements Serializable {
         this.conteudo = conteudo;
     }
 
-    public Integer getId() {
-        return id;
+    public String getTitulo() {
+        return titulo;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
 
-    public byte[] getFoto() {
-        return foto;
+    public Date getDataHora() {
+        return dataHora;
     }
 
-    public void setFoto(byte[] foto) {
-        this.foto = foto;
+    public void setDataHora(Date dataHora) {
+        this.dataHora = dataHora;
     }
 
-    public String getExtensao() {
-        return extensao;
+    public Integer getIdPostagem() {
+        return idPostagem;
     }
 
-    public void setExtensao(String extensao) {
-        this.extensao = extensao;
+    public void setIdPostagem(Integer idPostagem) {
+        this.idPostagem = idPostagem;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public Usuario getIdUsuario() {
+        return idUsuario;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setIdUsuario(Usuario idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (idPostagem != null ? idPostagem.hashCode() : 0);
         return hash;
     }
 
@@ -129,7 +132,7 @@ public class Postagem implements Serializable {
             return false;
         }
         Postagem other = (Postagem) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.idPostagem == null && other.idPostagem != null) || (this.idPostagem != null && !this.idPostagem.equals(other.idPostagem))) {
             return false;
         }
         return true;
@@ -137,7 +140,7 @@ public class Postagem implements Serializable {
 
     @Override
     public String toString() {
-        return "classes.Postagem[ id=" + id + " ]";
+        return "classes.Postagem[ idPostagem=" + idPostagem + " ]";
     }
-
+    
 }

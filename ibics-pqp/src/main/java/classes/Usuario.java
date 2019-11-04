@@ -7,7 +7,6 @@ package classes;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,7 +14,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -35,11 +33,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Usuario.findByNmNome", query = "SELECT u FROM Usuario u WHERE u.nmNome = :nmNome")
     , @NamedQuery(name = "Usuario.findByDsSenha", query = "SELECT u FROM Usuario u WHERE u.dsSenha = :dsSenha")
     , @NamedQuery(name = "Usuario.findByNrCpf", query = "SELECT u FROM Usuario u WHERE u.nrCpf = :nrCpf")
-    , @NamedQuery(name = "Usuario.findById", query = "SELECT u FROM Usuario u WHERE u.id = :id")})
+    , @NamedQuery(name = "Usuario.findByIdUsuario", query = "SELECT u FROM Usuario u WHERE u.idUsuario = :idUsuario")})
 public class Usuario implements Serializable {
-
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "usuario")
-    private Postagem postagem;
 
     private static final long serialVersionUID = 1L;
     @Basic(optional = false)
@@ -47,31 +42,35 @@ public class Usuario implements Serializable {
     @Size(min = 1, max = 2147483647)
     @Column(name = "ds_email")
     private String dsEmail;
+    
     @Size(max = 2147483647)
     @Column(name = "nm_nome")
     private String nmNome;
+    
     @Size(max = 2147483647)
     @Column(name = "ds_senha")
     private String dsSenha;
+    
     @Column(name = "nr_cpf")
     private Long nrCpf;
+    
     @Id
-    @Basic(optional = false)    
+    @Basic(optional = false)
     @NotNull
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "meugerador")
     @SequenceGenerator(name="meugerador", sequenceName = "sq_usuario")
-    @Column(name = "id")
-    private Integer id;
+    @Column(name = "id_usuario")
+    private Integer idUsuario;
 
     public Usuario() {
     }
 
-    public Usuario(Integer id) {
-        this.id = id;
+    public Usuario(Integer idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
-    public Usuario(Integer id, String dsEmail) {
-        this.id = id;
+    public Usuario(Integer idUsuario, String dsEmail) {
+        this.idUsuario = idUsuario;
         this.dsEmail = dsEmail;
     }
 
@@ -107,18 +106,18 @@ public class Usuario implements Serializable {
         this.nrCpf = nrCpf;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getIdUsuario() {
+        return idUsuario;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdUsuario(Integer idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (idUsuario != null ? idUsuario.hashCode() : 0);
         return hash;
     }
 
@@ -129,7 +128,7 @@ public class Usuario implements Serializable {
             return false;
         }
         Usuario other = (Usuario) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.idUsuario == null && other.idUsuario != null) || (this.idUsuario != null && !this.idUsuario.equals(other.idUsuario))) {
             return false;
         }
         return true;
@@ -137,15 +136,7 @@ public class Usuario implements Serializable {
 
     @Override
     public String toString() {
-        return "classes.Usuario[ id=" + id + " ]";
-    }
-
-    public Postagem getPostagem() {
-        return postagem;
-    }
-
-    public void setPostagem(Postagem postagem) {
-        this.postagem = postagem;
+        return "classes.Usuario[ idUsuario=" + idUsuario + " ]";
     }
     
 }

@@ -42,10 +42,11 @@
     <div align="center">
         <form action="ServletPostagem" method="post" enctype="multipart/form-data">
             <textarea name="conteudo" style="width:600px; height:200px; text-align: center;" placeholder="No que você está pensando?" ></textarea>
+            <textarea name="titulo" style="width:600px; height:200px; text-align: center;" placeholder="Título" ></textarea>
             <p>
-            Foto:<input type="file" name="foto">
+            <!--Foto:<input type="file" name="foto">-->
             <p>  
-                <input type="hidden" value="<%=usuario.getId()%>" name="pid">
+                <input type="hidden" value="<%=usuario.getIdUsuario()%>" name="pid">
                 <input type="hidden" value="" name="ppid">
                 <input type="submit" value="Enviar Postagem" href ="paginadepost.jsp">
         </form> 

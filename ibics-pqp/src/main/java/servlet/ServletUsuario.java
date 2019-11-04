@@ -29,7 +29,7 @@ public class ServletUsuario extends HttpServlet {
         //Detecta se é usuario novo ou antigo
         if(!idtext.isEmpty()){
             Integer id = Integer.parseInt(idtext);
-            usuario.setId(id);
+            usuario.setIdUsuario(id);
         }
         //Insere informações no objeto
         usuario.setNmNome(nome);

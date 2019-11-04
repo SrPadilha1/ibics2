@@ -47,14 +47,16 @@
                 request.setAttribute("postagem", lista);
                 for (Iterator it = lista.iterator(); it.hasNext();) {
                     Postagem p = (Postagem) it.next();
-                    String codigo = p.getId().toString();
-                    byte[] imagem = p.getFoto();
-                    String foto = Base64.getEncoder().encodeToString(imagem);
+                    String codigo = p.getIdPostagem().toString();
+                    //byte[] imagem = p.getFoto();
+                    //String foto = Base64.getEncoder().encodeToString(imagem);
             %>
             <div align="center">
-                <a>Usuario: <%=usuario.getNmNome()%></a>
-                <a>Postagem: <%=p.getConteudo()%></a>
-                <img src="data:image/png;image/jpg;base64,<%=foto%>" style="max-width: 100%; max-height: 100%;"/>
+                <a>Usuario: <%=usuario.getNmNome()%></a><br>
+                <a>Conteúdo: <%=p.getConteudo()%></a><br>
+                <a>Título: <%=p.getTitulo()%></a><br>
+                <a>Hora: <%=p.getDataHora()%></a><br>
+                <br><br>
                 
             </div>
             <%}%>
