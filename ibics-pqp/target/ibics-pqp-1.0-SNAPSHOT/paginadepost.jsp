@@ -18,6 +18,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open Sans">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="paginadepost.css">
         <style>
             h1,h2,h3,h4,h5,h6 {font-family: "Oswald"}
             body {font-family: "Open Sans"}
@@ -52,13 +53,14 @@
                     //String foto = Base64.getEncoder().encodeToString(imagem);
             %>
             <div align="center">
+                <a>Título: <%=p.getTitulo()%></a>
+                <a> Hora: <%=p.getDataHora()%></a> <br>               
                 <a>Usuario: <%=usuario.getNmNome()%></a><br>
-                <a>Conteúdo: <%=p.getConteudo()%></a><br>
-                <a>Título: <%=p.getTitulo()%></a><br>
-                <a>Hora: <%=p.getDataHora()%></a><br>
+                <a>Conteúdo: <%=p.getConteudo()%></a><br>              
+                
                 <br><br>
                 
-            </div>
+   </div>
             <%}%>
             <br><br><br>
             
