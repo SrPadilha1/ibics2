@@ -33,7 +33,8 @@
 
         <div class="w3-container w3-white w3-margin w3-padding-large">
             <div class="w3-center">
-                <h3>Postagens</h3>          
+                <h3>Postagens</h3>
+                <h3> Título </h3>
             </div>
 
             

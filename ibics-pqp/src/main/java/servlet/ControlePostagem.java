@@ -45,12 +45,12 @@ public class ControlePostagem {
 
     //Retorna todos os postagem do sistema
     public static List<Postagem> listar() {
+        System.out.println("chegou aqui!!!");
         Session sessionRecheio;
         sessionRecheio = HibernateUtil.getSession();
-        Transaction tr = sessionRecheio.beginTransaction();
         String hql = "from Postagem u";
-        List<Postagem> lista = (List) sessionRecheio.createQuery(hql).list();
-        tr.commit();
+        List<Postagem> lista = (List<Postagem>) sessionRecheio.createQuery(hql).list();
+        System.out.println("NO CONTROLEPOSTAGEM: " + lista.size() + " Postagens");
         return lista;
     }
 

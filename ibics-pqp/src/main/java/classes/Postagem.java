@@ -6,6 +6,7 @@
 package classes;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -17,6 +18,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -24,6 +26,7 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -39,6 +42,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Postagem.findByDataHora", query = "SELECT p FROM Postagem p WHERE p.dataHora = :dataHora")
     , @NamedQuery(name = "Postagem.findByIdPostagem", query = "SELECT p FROM Postagem p WHERE p.idPostagem = :idPostagem")})
 public class Postagem implements Serializable {
+
+    @OneToMany(mappedBy = "idPostagem")
+    private Collection<Comentario> comentarioCollection;
 
     private static final long serialVersionUID = 1L;
     @Basic(optional = false)
@@ -141,6 +147,15 @@ public class Postagem implements Serializable {
     @Override
     public String toString() {
         return "classes.Postagem[ idPostagem=" + idPostagem + " ]";
+    }
+
+    @XmlTransient
+    public Collection<Comentario> getComentarioCollection() {
+        return comentarioCollection;
+    }
+
+    public void setComentarioCollection(Collection<Comentario> comentarioCollection) {
+        this.comentarioCollection = comentarioCollection;
     }
     
 }

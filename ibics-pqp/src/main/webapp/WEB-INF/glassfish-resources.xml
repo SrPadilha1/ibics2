@@ -12,4 +12,5 @@
     </jdbc-connection-pool>
     <jdbc-resource enabled="true" jndi-name="java:app/fonteibics" object-type="user" pool-name="post-gre-sql_ibics_postgresPool"/>
     <jdbc-resource enabled="true" jndi-name="java:app/ibics" object-type="user" pool-name="post-gre-sql_ibics_postgresPool"/>
+    <jdbc-resource enabled="true" jndi-name="java:app/estranho" object-type="user" pool-name="post-gre-sql_ibics_postgresPool"/>
 </resources>

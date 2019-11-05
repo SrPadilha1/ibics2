@@ -20,7 +20,7 @@ public class ServletLogin extends HttpServlet {
         String senha = request.getParameter("ds_senha");
 
         Session session = HibernateUtil.getSession();
-        Usuario usuario = (Usuario) session.createQuery("from Usuario where ds_email=? and ds_senha=?").setString(0, email).setString(1, senha).uniqueResult();
+        Usuario usuario = (Usuario) session.createQuery("from Usuario where dsEmail=? and dsSenha=?").setString(0, email).setString(1, senha).uniqueResult();
         session.close();
 
         if (usuario == null) {

@@ -5,7 +5,7 @@
  */
 package servlet;
 
-import classes.Comentario;
+import classes.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
@@ -80,9 +80,14 @@ public class ServletComentario extends HttpServlet {
         Comentario comentario = new Comentario();
         
         comentario.setComentario(request.getParameter("comentario"));
+        
+        String idUsuario = request.getParameter("idUsuario");
+        Integer idUser = Integer.parseInt(idUsuario);
+        
+        Usuario usuario = new Usuario(idUser);
 
         Date agora = new Date();
-        comentario.set(agora);
+        comentario.setDataHora(agora);
         comentario.setIdUsuario(usuario);
         
         Session sessionRecheio;

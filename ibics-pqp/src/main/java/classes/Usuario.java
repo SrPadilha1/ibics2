@@ -6,7 +6,9 @@
 package classes;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,11 +16,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -36,6 +40,12 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Usuario.findByIdUsuario", query = "SELECT u FROM Usuario u WHERE u.idUsuario = :idUsuario")
     , @NamedQuery(name = "Usuario.findByAdmin", query = "SELECT u FROM Usuario u WHERE u.admin = :admin")})
 public class Usuario implements Serializable {
+
+    @OneToMany(mappedBy = "idUsuario")
+    private Collection<Comentario> comentarioCollection;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario")
+    private Collection<Postagem> postagemCollection;
 
     private static final long serialVersionUID = 1L;
     @Basic(optional = false)
@@ -149,6 +159,24 @@ public class Usuario implements Serializable {
     @Override
     public String toString() {
         return "classes.Usuario[ idUsuario=" + idUsuario + " ]";
+    }
+
+    @XmlTransient
+    public Collection<Postagem> getPostagemCollection() {
+        return postagemCollection;
+    }
+
+    public void setPostagemCollection(Collection<Postagem> postagemCollection) {
+        this.postagemCollection = postagemCollection;
+    }
+
+    @XmlTransient
+    public Collection<Comentario> getComentarioCollection() {
+        return comentarioCollection;
+    }
+
+    public void setComentarioCollection(Collection<Comentario> comentarioCollection) {
+        this.comentarioCollection = comentarioCollection;
     }
     
 }
