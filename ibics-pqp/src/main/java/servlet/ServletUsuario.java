@@ -42,6 +42,6 @@ public class ServletUsuario extends HttpServlet {
         UsuarioControle.salvar(usuario);
         
         //Redireciona pagina
-        response.sendRedirect("pginicio.html");
+        response.sendRedirect("paginadepost.jsp");
     }
 }

@@ -8,6 +8,7 @@ package servlet;
 import classes.Comentario;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -77,7 +78,13 @@ public class ServletComentario extends HttpServlet {
         
 
         Comentario comentario = new Comentario();
+        
         comentario.setComentario(request.getParameter("comentario"));
+
+        Date agora = new Date();
+        comentario.set(agora);
+        comentario.setIdUsuario(usuario);
+        
         Session sessionRecheio;
         sessionRecheio = HibernateUtil.getSession();
         Transaction tr = sessionRecheio.beginTransaction();

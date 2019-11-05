@@ -40,7 +40,13 @@
                 <h3>Postagens</h3>          
             </div>
 
-            <h3><a href="postagem.jsp"><button> Fazer postagem</button></a></h3>
+            <%
+                if (usuario.getAdmin() == true) {
+            %>    <%@ include file="postagem.jspf"%>
+
+            <%}%> 
+
+
 
             <%
                 List<Postagem> lista = ControlePostagem.listar();
@@ -51,17 +57,15 @@
                     //byte[] imagem = p.getFoto();
                     //String foto = Base64.getEncoder().encodeToString(imagem);
             %>
-            <div align="center">
+            <div align="center" style="background: pink;">
                 <a>Usuario: <%=usuario.getNmNome()%></a><br>
                 <a>Conteúdo: <%=p.getConteudo()%></a><br>
                 <a>Título: <%=p.getTitulo()%></a><br>
                 <a>Hora: <%=p.getDataHora()%></a><br>
-                <br><br>
-                
             </div>
             <%}%>
             <br><br><br>
-            
+
             <center> <h3>Comentários</h3>     </center>
             <div align="center">
                 <display:table name="comentarios">
