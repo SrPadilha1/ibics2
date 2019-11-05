@@ -53,8 +53,8 @@
                     //String foto = Base64.getEncoder().encodeToString(imagem);
             %>
             <div align="center">
-                <a>Título: <%=p.getTitulo()%></a>
-                <a> Hora: <%=p.getDataHora()%></a> <br>               
+                <a>Título: <%=p.getTitulo()%></a><br>
+                <a>Hora: <%=p.getDataHora()%></a><br>               
                 <a>Usuario: <%=usuario.getNmNome()%></a><br>
                 <a>Conteúdo: <%=p.getConteudo()%></a><br>              
                 
@@ -75,7 +75,7 @@
 
 
             <a href="comentar.html" > <button class="w3-button w3-black"> <b>Comentários</b></button></a>
-            <button class="w3-button w3-white w3-border" onclick="likeFunction(this)"><b><i class="fa fa-thumbs-up"></i> Like</b></button>
+            
             <a href="pgdenuncia.html" > <button class="w3-button w3-black"> <b>Denúncia</b></button></a> 
             <p class="w3-clear"></p>
 
@@ -87,22 +87,7 @@
 
             </footer>
 
-            <script>
-                document.getElementById("myBtn").click();
-                function myFunction(id) {
-                    var x = document.getElementById(id);
-                    if (x.className.indexOf("w3-show") == -1) {
-                        x.className += " w3-show";
-                    } else {
-                        x.className = x.className.replace(" w3-show", "");
-                    }
-                }
-
-                function likeFunction(x) {
-                    x.style.fontWeight = "bold";
-                    x.innerHTML = "✓ Liked";
-                }
-            </script>
+            
         </div>
 
 

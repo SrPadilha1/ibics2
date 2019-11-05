@@ -40,9 +40,9 @@
     <p></p>
 
     <div align="center">
-        <form action="ServletPostagem" method="post" enctype="multipart/form-data">
-            <textarea name="conteudo" style="width:600px; height:200px; text-align: center;" placeholder="No que você está pensando?" ></textarea>
-            <textarea name="titulo" style="width:600px; height:200px; text-align: center;" placeholder="Título" ></textarea>
+        <form action="ServletPostagem" method="post" enctype="multipart/form-data">      
+            <textarea name="titulo" style="width:300px; height:50px; text-align: center;" placeholder="Título" ></textarea> 
+            <br> <textarea name="conteudo" style="width:300px; height:50px; text-align: center;" placeholder="No que você está pensando?" ></textarea> <br>
             <p>
             <!--Foto:<input type="file" name="foto">-->
             <p>  
