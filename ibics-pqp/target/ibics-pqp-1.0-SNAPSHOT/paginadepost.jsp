@@ -73,11 +73,20 @@
             <%
                 for (Comentario c : p.getComentarioCollection()) {
             %>
+<<<<<<< HEAD
 
             <div align="center" style="background: #1abc9c">
                 <a><%=c.getComentario()%></a><br>               
                 <a>Por <%=c.getIdUsuario()%>, em <%=c.getDataHora()%></a><br><br>            
 
+=======
+            <div align="center">
+                <a>Título: <%=p.getTitulo()%></a><br>
+                <a>Hora: <%=p.getDataHora()%></a><br>               
+                <a>Usuario: <%=usuario.getNmNome()%></a><br>
+                <a>Conteúdo: <%=p.getConteudo()%></a><br>              
+                
+>>>>>>> d7b36c415e40662076b0797eebfb08e5c0f0e3c9
                 <br><br>
             </div>
             <%
@@ -91,12 +100,16 @@
 
 
             <a href="comentar.html" > <button class="w3-button w3-black"> <b>Comentários</b></button></a>
+<<<<<<< HEAD
 
             <div hidden>
                 <input type="text" name="idUsuario" value="<%=usuario.getIdUsuario()%>"
             </div>
 
             <button class="w3-button w3-white w3-border" onclick="likeFunction(this)"><b><i class="fa fa-thumbs-up"></i> Like</b></button>
+=======
+            
+>>>>>>> d7b36c415e40662076b0797eebfb08e5c0f0e3c9
             <a href="pgdenuncia.html" > <button class="w3-button w3-black"> <b>Denúncia</b></button></a> 
             <p class="w3-clear"></p>
 
@@ -108,22 +121,7 @@
 
             </footer>
 
-            <script>
-                document.getElementById("myBtn").click();
-                function myFunction(id) {
-                    var x = document.getElementById(id);
-                    if (x.className.indexOf("w3-show") == -1) {
-                        x.className += " w3-show";
-                    } else {
-                        x.className = x.className.replace(" w3-show", "");
-                    }
-                }
-
-                function likeFunction(x) {
-                    x.style.fontWeight = "bold";
-                    x.innerHTML = "✓ Liked";
-                }
-            </script>
+            
         </div>
 
 
