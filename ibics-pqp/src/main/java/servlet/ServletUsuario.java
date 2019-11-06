@@ -36,8 +36,9 @@ public class ServletUsuario extends HttpServlet {
         usuario.setDsSenha(senha);
         usuario.setDsEmail(email);
         usuario.setNrCpf(Long.parseLong(cpfXaBlau));
-        
+        usuario.setAdmin(false);
 
+        
         //Chama de funcao para salvar ou atualizar usuario
         UsuarioControle.salvar(usuario);
         

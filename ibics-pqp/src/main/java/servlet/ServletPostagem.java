@@ -84,25 +84,29 @@ public class ServletPostagem extends HttpServlet {
         /*
         Part filePart = request.getPart("foto");
         InputStream inputStream = filePart.getInputStream();
-        */
+         */
         Postagem postagem = new Postagem();
         Usuario usuario = new Usuario();
         usuario.setIdUsuario(idUsuario);
 
-        if(!idtext.isEmpty()){
+        if (!idtext.isEmpty()) {
             Integer id = Integer.parseInt(idtext);
             postagem.setIdPostagem(id);
         }
         postagem.setConteudo(request.getParameter("conteudo"));
         postagem.setTitulo(request.getParameter("titulo"));
-        
+
         Date agora = new Date();
         postagem.setDataHora(agora);
         postagem.setIdUsuario(usuario);
-        /*
-        postagem.setFoto(IOUtils.toByteArray(inputStream));       
-        postagem.setExtensao(filePart.getContentType());
-        */
+
+        Part filePart = request.getPart("foto");
+        if (filePart != null) {
+            InputStream inputStream = filePart.getInputStream();
+            postagem.setFoto(IOUtils.toByteArray(inputStream));
+            postagem.setExtensao(filePart.getContentType());
+        }
+
         Session sessionRecheio;
         sessionRecheio = HibernateUtil.getSession();
         Transaction tr = sessionRecheio.beginTransaction();

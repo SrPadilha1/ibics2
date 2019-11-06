@@ -67,7 +67,6 @@ public class Comentario implements Serializable {
     public Comentario(Integer idComentario) {
         this.idComentario = idComentario;
     }
-
     public Comentario(Integer idComentario, String comentario) {
         this.idComentario = idComentario;
         this.comentario = comentario;
