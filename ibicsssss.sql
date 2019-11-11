@@ -1,4 +1,4 @@
---
+﻿--
 -- PostgreSQL database dump
 --
 
@@ -166,8 +166,7 @@ ALTER TABLE usuario OWNER TO postgres;
 -- Data for Name: avaliacao; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY avaliacao (cod_aval, ds_email_aval, cod_post) FROM stdin;
-\.
+
 
 
 --
@@ -176,8 +175,6 @@ COPY avaliacao (cod_aval, ds_email_aval, cod_post) FROM stdin;
 -- Data for Name: comentario; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY comentario (comentario, id_postagem, id_usuario, titulo, data_hora) FROM stdin;
-\.
 
 
 --
@@ -186,9 +183,6 @@ COPY comentario (comentario, id_postagem, id_usuario, titulo, data_hora) FROM st
 -- Data for Name: denuncia; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY denuncia (conteudod, id_usuario, titulo, data_hora, id_postagem) FROM stdin;
-dswds	\N	\N	\N	\N
-\.
 
 
 --
@@ -197,9 +191,7 @@ dswds	\N	\N	\N	\N
 -- Data for Name: postagem; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY postagem (conteudo, titulo, data_hora, id_usuario, id_postagem) FROM stdin;
-Vamos programar!	Linguagem Java	2019-11-05 11:56:32.907-02	500	451
-\.
+
 
 
 --
@@ -226,8 +218,7 @@ SELECT pg_catalog.setval('sq_usuario', 11, true);
 -- Data for Name: tema; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY tema (cod_tema, cod_subtema, ds_descricao) FROM stdin;
-\.
+
 
 
 --
@@ -236,10 +227,7 @@ COPY tema (cod_tema, cod_subtema, ds_descricao) FROM stdin;
 -- Data for Name: usuario; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY usuario (ds_email, nm_nome, ds_senha, nr_cpf, id_usuario) FROM stdin;
-miguel@gmail.com	miguel 	000	0	500
-malu@gmail.com	malu	123	0	550
-\.
+
 
 
 --

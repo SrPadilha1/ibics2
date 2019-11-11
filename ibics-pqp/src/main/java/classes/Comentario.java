@@ -43,20 +43,25 @@ public class Comentario implements Serializable {
     @Size(min = 1, max = 2147483647)
     @Column(name = "comentario")
     private String comentario;
+    
     @Size(max = 2147483647)
     @Column(name = "titulo")
     private String titulo;
+    
     @Column(name = "data_hora")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataHora;
+    
     @Id
     @Basic(optional = false)
     @NotNull
     @Column(name = "id_comentario")
     private Integer idComentario;
+    
     @JoinColumn(name = "id_postagem", referencedColumnName = "id_postagem")
     @ManyToOne
     private Postagem idPostagem;
+    
     @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
     @ManyToOne
     private Usuario idUsuario;
