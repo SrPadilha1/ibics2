@@ -50,12 +50,5 @@
             <input type="submit" value="Enviar Postagem" href ="paginadepost.jsp">
         </form> 
     </div>          
-
-
-
-
-
-
-
 </body>
 </html>
