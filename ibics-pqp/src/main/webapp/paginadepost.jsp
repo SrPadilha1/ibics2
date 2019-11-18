@@ -19,6 +19,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open Sans">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="paginadepost.css">
+        <link rel="stylesheet" type="text/css" href="pagpost.css">
         <style>
             h1,h2,h3,h4,h5,h6 {font-family: "Oswald"}
             body {font-family: "Open Sans"}
@@ -26,20 +27,37 @@
         </style>
         <%
             Usuario usuario = (Usuario) session.getAttribute("UsuarioLogado");
-            System.out.println("tem o usuario: "+usuario);
+            System.out.println("tem o usuario: " + usuario);
         %>
     <body class="w3-light-grey">
         <header class="w3-container w3-center w3-padding-48 w3-green">
             <h1 class="w3-xxxlarge"><b>IBICS</b></h1>
             <h6>Bem-vido ao IBICS <span class="w3-tag">I believe I can study</span></h6>
+
         </header>
-        <%@include file="menutop.jpst" %>
     </style>
 <body>
     <div class="navbar">
-
+        <div class="topnav">
+            <a href="#portugues" class="active">Portugues</a>
+            <a href="#Matematica">Matematica</a>
+            <a href="#Geografia">Geografia</a>
+            <a href="#Biologia">Biologia</a>
+            <a href="#Quimica">Quimica</a>
+            <a href="#História">História</a>
+            <a href="#Filosofia">Filosofia</a>
+            <a href="#Inglês">Inglês</a>
+            <a href="#Espanhol">Espanhol</a>
+            
+            <div align="right">
+                <a href="usuarioperfil.jsp">PERFIL</a>
+            </div>
+        </div> 
         <div class="w3-container w3-white w3-margin w3-padding-large">
+
+
             <div class="w3-center">
+
                 <h3>Postagens</h3>          
             </div>
 
@@ -83,18 +101,12 @@
             <%
                 }
             %>
-<br><br><br>
+            <br><br><br>
             <%}%>
-            
-
-
-
 
             <a href="comentar.html" > <button class="w3-button w3-black"> <b>Comentários</b></button></a>
             <a href="pgdenuncia.html" > <button class="w3-button w3-black"> <b>Denúncia</b></button></a> 
             <p class="w3-clear"></p>
-
-
 
 
             <footer class="w3-container w3-green" style="padding:32px">
@@ -102,7 +114,7 @@
 
             </footer>
 
-            
+
         </div>
 
 

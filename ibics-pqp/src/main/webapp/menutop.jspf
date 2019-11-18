@@ -1,8 +1,4 @@
-<%-- any content can be specified here e.g.: --%>
-<%@ page pageEncoding="UTF-8" %>
-<%@page import="com.ginf.ginffinal.Usuario"%>
-
-<%@ page pageEncoding="UTF-8" %>
+<%@page import="classes.*"%>
 
 <%
 
@@ -11,71 +7,34 @@
 %>
 
 <header class="header-section">
-
     <div class="container">
-
-
-
         <a class="site-logo" href="index.jsp">
-
             <img src="img/logo" alt="">
-
         </a>
-
         <% if (usuario == null) { %>
-
         <div class="user-panel">
-
             <a href="Login.html">Logar</a> / 
-
             <a href="Cadastro.html">Cadastrar</a>
-
         </div>
-
         <% } else {%>
-
         <div class="user-panel">
-
-            <a href="usuarioperfil.jsp">Bem-vindo, <%=usuario.getNome()%>!</a>
-
-
-
+            <a href="usuarioperfil.jsp">Bem-vindo, <%=usuario.getNmNome()%>!</a>
         </div>
-
         <% }%>
-
         <div class="nav-switch">
-
             <i class="fa fa-bars"></i>
-
         </div>
-
-
-
         <nav class="main-menu">
-
             <ul>
-
                 <li><a href="index.jsp">Inicio</a></li>
-
                 <li><a href="review.jsp">Noticia</a></li>
-
                 <li><a href="categories.jsp">Blog</a></li>
-
-                <% if (usuario != null && usuario.isAdmin()) { %>
-
+                <% if (usuario.getAdmin() == true) { %>
                 <li><a href="postagem.jsp">Nova Postagem</a></li>
-
                 <li><a href="#">Novo Admin</a></li>
-
                 <% }%>
-
                 <li><a href="contact.jsp">Contato</a></li>
-
             </ul>
-
         </nav>
-
     </div>
-
 </header>

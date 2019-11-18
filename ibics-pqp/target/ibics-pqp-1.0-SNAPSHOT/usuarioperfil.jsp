@@ -1,132 +1,47 @@
-<%-- 
-    Document   : usuarioperfil
-    Created on : 12/11/2019, 12:10:26
-    Author     : aluno
---%>
-
-<%@page import="classes.Usuario"%>
+<%@page import="java.util.Base64"%>
+<%@page import="java.util.Iterator"%>
+<%@page import="java.util.List"%>
+<%@page import="servlet.ControlePostagem"%>
+<%@page import="classes.Postagem"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
+<%@taglib uri="http://displaytag.sf.net" prefix="display"%>
+<jsp:directive.page import="classes.*" />
+<jsp:directive.page import="java.util.List" />
+<!DOCTYPE>
+<html lang="en">
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Perfil</title>
-
+        <title>IBICSS</title>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="ibics.css">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open Sans">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="paginadepost.css">
+        <style>
+            h1,h2,h3,h4,h5,h6 {font-family: "Oswald"}
+            body {font-family: "Open Sans"}
 
-        <link href="img/favicon.ico" rel="shortcut icon"/>
-
-
-        <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i" rel="stylesheet">
-
-
-        <link rel="stylesheet" href="css/bootstrap.min.css"/>
-        <link rel="stylesheet" href="css/font-awesome.min.css"/>
-        <link rel="stylesheet" href="css/owl.carousel.css"/>
-        <link rel="stylesheet" href="css/style.css"/>
-        <link rel="stylesheet" href="css/animate.css"/>
+        </style>
         <%
             Usuario usuario = (Usuario) session.getAttribute("UsuarioLogado");
+            System.out.println("tem o usuario: " + usuario);
         %>
-
-
-    </head>
-    <body>
-
-
-
-
-        <div id="preloder">
-            <div class="loader"></div>
-        </div>
-
-
-        <header class="header-section">
-            <div class="container">
-
-                <a class="site-logo" href="pginicio.html">
-                    <img src="img/" alt="">
-                </a>
-                <div class="user-panel">
-                   <a href="usuarioperfil.jsp"> Bem-vindo, <%=usuario.getNmNome()%>!
-                </div>
-
-                <div class="nav-switch">
-                    <i class="fa fa-bars"></i>
-                </div>
-
-            </div>
+    <body class="w3-light-grey">
+        <header class="w3-container w3-center w3-padding-48 w3-green">
+            <h1 class="w3-xxxlarge"><b>IBICS</b></h1>
+            <h6>Bem-vido ao IBICS <span class="w3-tag">I believe I can study</span></h6>
+            <a href="paginadepost.jsp" class="w3-button w3-black w3-padding-large w3-margin-bottom"><i class="fa fa-arrow-up w3-margin-right"></i>Página de post</a>
+            
         </header>
-
-
-
-       
-
-        <section class="page-info-section set-bg" data-setbg="img/page-top-bg/5.jpg">
-            <div class="pi-content">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-5 col-lg-6 text-white">
-                            <h2>Perfil</h2>
-                            <p></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-
-
-        <section class="page-section spad contact-page">
-            <div class="container">
-
-
-                <div class="col-lg-8">
-                    <div class="contact-form-warp">
-                        <h4 class="comment-title">Seus Dados</h4>
-                        <form class="comment-form">
-                            <div class="row">
-
-                                <center>
-                                    
-                                     <input type="file" name="foto" accept="image/png, image/jpeg"><br><br>
-
-                                    
-                                    <div style="padding: 10px 10px 10px 10px;">
-
-                                        Nome: <%=usuario.getNmNome()%> <br><br>
-                                           
-                                        E-mail: <%=usuario.getDsEmail()%><br><br>
-
-                                        ID: <%=usuario.getIdUsuario()%> <br><br>
-
-                                        <a href="cadastro/alterar.jsp?pid=<%=usuario.getIdUsuario()%>">Editar Perfil</a><br><br>
-                                        
-                                        <a href="Logout">Sair</a><br><br>
-                                    </div>
-                                </center>
-
-
-                            </div>
-                    </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<section class="footer-top-section">
-    <div class="container">
-
-        <script src="js/jquery-3.2.1.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/owl.carousel.min.js"></script>
-        <script src="js/jquery.marquee.min.js"></script>
-        <script src="js/main.js"></script>
-
-
-
-        </body>
-        </html>
+        
+        <img class="sticky" src="img_avatar.png" alt="Avatar"
+        
+        
+        Nome: <%=usuario.getNmNome()%>
+        <br>
+        Email: <%=usuario.getDsEmail()%>
+        <br>
+    </body>
+</html>
