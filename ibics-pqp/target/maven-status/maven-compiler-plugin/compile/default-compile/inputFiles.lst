@@ -1,20 +1,13 @@
 /home/aluno/ibics/ibics2/ibics-pqp/src/main/java/servlet/ServletDenuncia.java
 /home/aluno/ibics/ibics2/ibics-pqp/src/main/java/servlet/ServletComentario.java
-<<<<<<< HEAD
 /home/aluno/ibics/ibics2/ibics-pqp/src/main/java/servlet/ControlePostagem.java
 /home/aluno/ibics/ibics2/ibics-pqp/src/main/java/servlet/Logout.java
 /home/aluno/ibics/ibics2/ibics-pqp/src/main/java/servlet/ServletLogin.java
 /home/aluno/ibics/ibics2/ibics-pqp/src/main/java/classes/Comentario.java
 /home/aluno/ibics/ibics2/ibics-pqp/src/main/java/classes/Postagem.java
-=======
->>>>>>> 3e667d13e0f224eeb0f1ea0a8f49c4b1fe7971ca
 /home/aluno/ibics/ibics2/ibics-pqp/src/main/java/util/HibernateUtil.java
-/home/aluno/ibics/ibics2/ibics-pqp/src/main/java/servlet/ControlePostagem.java
 /home/aluno/ibics/ibics2/ibics-pqp/src/main/java/servlet/ServletPostagem.java
-/home/aluno/ibics/ibics2/ibics-pqp/src/main/java/servlet/ServletLogin.java
 /home/aluno/ibics/ibics2/ibics-pqp/src/main/java/classes/Denuncia.java
-/home/aluno/ibics/ibics2/ibics-pqp/src/main/java/classes/Comentario.java
 /home/aluno/ibics/ibics2/ibics-pqp/src/main/java/servlet/ServletUsuario.java
 /home/aluno/ibics/ibics2/ibics-pqp/src/main/java/servlet/UsuarioControle.java
 /home/aluno/ibics/ibics2/ibics-pqp/src/main/java/classes/Usuario.java
-/home/aluno/ibics/ibics2/ibics-pqp/src/main/java/classes/Postagem.java
