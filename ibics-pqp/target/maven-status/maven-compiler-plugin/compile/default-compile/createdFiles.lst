@@ -3,6 +3,7 @@ servlet/ControlePostagem.class
 classes/Postagem.class
 servlet/ServletLogin.class
 classes/Denuncia.class
+servlet/Logout.class
 servlet/ServletUsuario.class
 servlet/ServletPostagem.class
 classes/Usuario.class

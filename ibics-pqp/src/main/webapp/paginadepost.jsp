@@ -33,6 +33,7 @@
             <h1 class="w3-xxxlarge"><b>IBICS</b></h1>
             <h6>Bem-vido ao IBICS <span class="w3-tag">I believe I can study</span></h6>
         </header>
+        <%@include file="menutop.jpst" %>
     </style>
 <body>
     <div class="navbar">
