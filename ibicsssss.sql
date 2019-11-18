@@ -194,13 +194,7 @@ ALTER TABLE usuario OWNER TO postgres;
 -- Data for Name: comentario; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-<<<<<<< HEAD
-COPY comentario (comentario, titulo, data_hora, id_postagem, id_comentario, id_usuario) FROM stdin;
-Olha, velho... real...	\N	1982-01-12 00:00:00-03	1	1	1
-www, hein? Estou perplecta...	\N	2010-10-10 00:00:00-03	500	2	600
-\.
-=======
->>>>>>> e356124152cf35bd48b13268c2612bec2b75d088
+
 
 
 --
@@ -209,11 +203,7 @@ www, hein? Estou perplecta...	\N	2010-10-10 00:00:00-03	500	2	600
 -- Data for Name: denuncia; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-<<<<<<< HEAD
-COPY denuncia (conteudod, id_usuario, titulo, data_hora, id_postagem) FROM stdin;
-\.
-=======
->>>>>>> e356124152cf35bd48b13268c2612bec2b75d088
+
 
 
 --
@@ -222,14 +212,6 @@ COPY denuncia (conteudod, id_usuario, titulo, data_hora, id_postagem) FROM stdin
 -- Data for Name: postagem; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-<<<<<<< HEAD
-COPY postagem (conteudo, titulo, data_hora, id_usuario, id_postagem, foto, extensao) FROM stdin;
-Eu tenho muito conteúdo	Primeiro Post	1982-01-11 00:00:00-03	1	1	\N	\N
-www	wwww	2019-11-06 11:43:15.088-02	1	500	\N	\N
-\.
-=======
-
->>>>>>> e356124152cf35bd48b13268c2612bec2b75d088
 
 
 --
@@ -274,18 +256,8 @@ SELECT pg_catalog.setval('sq_usuario', 14, true);
 -- Data for Name: usuario; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-<<<<<<< HEAD
-COPY usuario (ds_email, nm_nome, ds_senha, nr_cpf, id_usuario, admin) FROM stdin;
-a	a	a	1	1	t
-millenam.barreto@gmail.com	Millena	123	14578956693	600	f
-queziatrajano@gmail.com	Quezia	000	0	650	f
-guilherme@gmail.com	Guilherme	123	13125977783	651	t
-m@gmail.com	jo	1	11111111111	701	f
-e@gmail.com	jo	'	11111111111	700	f
-\.
-=======
 
->>>>>>> e356124152cf35bd48b13268c2612bec2b75d088
+
 
 
 --
