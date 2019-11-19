@@ -43,7 +43,7 @@
         <form action="ServletPostagem" method="post" enctype="multipart/form-data">      
             <textarea name="titulo" style="width:300px; height:50px; text-align: center;" placeholder="Título" ></textarea> 
             <br> <textarea name="conteudo" style="width:300px; height:50px; text-align: center;" placeholder="No que você está pensando?" ></textarea> <br>
-            <h2>Escolher imagem:</h2>
+            <h5>Escolher imagem:</h5>
             <input type="file" name="foto" accept="image/png, image/jpeg"><br><br>
             <input type="hidden" value="<%=usuario.getIdUsuario()%>" name="pid">
             <input type="hidden" value="" name="ppid">

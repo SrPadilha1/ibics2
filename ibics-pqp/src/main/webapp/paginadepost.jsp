@@ -79,10 +79,10 @@
                     byte[] imagem = p.getFoto();
                     String foto = Base64.getEncoder().encodeToString(imagem);
 %>
-            <div align="center" style="background: pink;">
+            <div align="center">
                 <a><%=p.getTitulo()%></a><br>            
                 <a><%=usuario.getNmNome()%>, </a><br><br>
-                <img src="data:image/png;base64,<%=foto%>" width='80' height='80'><br>
+                <img src="data:image/png;base64,<%=foto%>" width='500' height='400'><br>
                 <a><%=p.getConteudo()%></a><br>              
 
                 <br><br>
