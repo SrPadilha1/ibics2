@@ -33,15 +33,76 @@
             <h1 class="w3-xxxlarge"><b>IBICS</b></h1>
             <h6>Bem-vido ao IBICS <span class="w3-tag">I believe I can study</span></h6>
             <a href="paginadepost.jsp" class="w3-button w3-black w3-padding-large w3-margin-bottom"><i class="fa fa-arrow-up w3-margin-right"></i>Página de post</a>
-            
+
         </header>
-        
-        <img class="sticky" src="img_avatar.png" alt="Avatar"
-        
-        
-        Nome: <%=usuario.getNmNome()%>
-        <br>
-        Email: <%=usuario.getDsEmail()%>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="perfil.css" />
+    </head>
+    <body class="is-preload">
+
+        <!-- Wrapper -->
+        <div id="wrapper">
+
+            <!-- Main -->
+            <div id="main">
+                <div class="inner">
+
+                    <!-- Header -->
+                    <header id="header">
+                        <a class="logo"><strong>Perfil</strong> </a>
+                        <ul class="icons">
+
+                            <li><a href="usuarioperfil.jsp" ><span class="label"><%=usuario.getIdUsuario()%></span></a></li>
+                            <li><a class="icon fa fa-user-circle-o"><span class="label">Perfil</span></a></li>
+                        </ul>
+                    </header>
+
+                    <!-- Content -->
+                    <section>
+                        <div id="block" style="padding-left: 10px;">
+                            <div id="left">
+                                <img src="avatar.jpg" width="90%" style="border-radius: 10000px;">
+                            </div>
+
+                            Nome: <%=usuario.getNmNome()%><br><br>
+                            E-mail: <%=usuario.getDsEmail()%><br><br>
+
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <br>
+            <!-- Sidebar -->
+            <div id="sidebar">
+                <div class="inner">
+
+                    <!-- Section -->
+                    <section>
+                        <header class="major">
+                            <h2>Fale conosco!</h2>
+                        </header>
+                        <p>Em caso de dúvidas, entre em contato.</p>
+                        <ul class="contact">
+                            <li class="fa-envelope-o"><a href="#">ibics@gmail.com</a></li>
+                            <li class="fa-phone">(22)00000-0000</li>
+                            <li class="fa-home"> Quissamã <br />
+                                RJ, Brasil</li>
+                        </ul>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+        <a  href = "perfilEdit.jsp" > <button class= "botão w3 w3-black " > <b> Editar Perfil </b></button> </a>
+
+
+        <footer class="w3-container w3-green" style="padding:32px">
+            <a href="#" class="w3-button w3-black w3-padding-large w3-margin-bottom"><i class="fa fa-arrow-up w3-margin-right"></i>Inicio</a>
+
+        </footer>
+
         <br>
     </body>
 </html>
