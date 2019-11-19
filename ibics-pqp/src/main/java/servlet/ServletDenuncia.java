@@ -5,14 +5,17 @@
  */
 package servlet;
 
-import classes.Denuncia;
+import classes.*;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Date;
+import javax.naming.spi.DirStateFactory.Result;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.ws.spi.http.HttpExchange;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import util.HibernateUtil;
@@ -41,7 +44,7 @@ public class ServletDenuncia extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ServletDenuncia</title>");            
+            out.println("<title>Servlet ServletDenuncia</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet ServletDenuncia at " + request.getContextPath() + "</h1>");
@@ -76,15 +79,38 @@ public class ServletDenuncia extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        Denuncia denuncia = new Denuncia();
+        Usuario usuario = new Usuario();
+        Postagem postagem = new Postagem();
+
+        String idUsuario = request.getParameter("denunciante");
+        String idPostagem = request.getParameter("postagem");
+        String idDenuncia = request.getParameter("pid");
         
-        Denuncia  denuncia  = new Denuncia ();
-        denuncia.setConteudod(request.getParameter("conteudod"));
+        usuario.setId(Integer.parseInt(idUsuario));
+        postagem.setIdPostagem(Integer.parseInt(idPostagem));
+                
+        denuncia.setDescricao(request.getParameter("descricao"));
+        denuncia.setUsuario(usuario);
+        denuncia.setPostagem(postagem);
+        Date agora = new Date();
+        denuncia.setDataHora(agora);
+        
+        if (!idDenuncia.isEmpty()) {
+            Integer id = Integer.parseInt(idDenuncia);
+            denuncia.setId(id);
+        }
+        
+        denuncia.setUsuario(usuario);
+        
+        
         Session sessionRecheio;
         sessionRecheio = HibernateUtil.getSession();
         Transaction tr = sessionRecheio.beginTransaction();
         sessionRecheio.saveOrUpdate(denuncia);
         tr.commit();
-        
+
         response.sendRedirect("pgdenuncia.html");
         processRequest(request, response);
     }
@@ -94,5 +120,7 @@ public class ServletDenuncia extends HttpServlet {
      *
      * @return a String containing servlet description
      */
-    
+    public Result authenticate(HttpExchange he) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 }

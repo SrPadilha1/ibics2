@@ -41,6 +41,9 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Usuario.findByAdmin", query = "SELECT u FROM Usuario u WHERE u.admin = :admin")})
 public class Usuario implements Serializable {
 
+    @OneToMany(mappedBy = "usuario")
+    private Collection<Denuncia> denunciaCollection;
+
     @OneToMany(mappedBy = "idUsuario")
     private Collection<Comentario> comentarioCollection;
 
@@ -181,6 +184,15 @@ public class Usuario implements Serializable {
 
     public void setId(int parseInt) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @XmlTransient
+    public Collection<Denuncia> getDenunciaCollection() {
+        return denunciaCollection;
+    }
+
+    public void setDenunciaCollection(Collection<Denuncia> denunciaCollection) {
+        this.denunciaCollection = denunciaCollection;
     }
     
 }

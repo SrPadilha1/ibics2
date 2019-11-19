@@ -51,7 +51,7 @@
 
                     <!-- Header -->
                     <header id="header">
-                        <a class="logo"><strong>Perfil</strong> </a>
+                        <a class="logo" href="usuarioeditar.jsp?pid=<%=usuario.getIdUsuario()%>"><strong>Editar Perfil</strong> </a>
                         <ul class="icons">
 
                             <li><a href="usuarioperfil.jsp" ><span class="label"><%=usuario.getIdUsuario()%></span></a></li>

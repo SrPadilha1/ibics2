@@ -23,7 +23,8 @@ public class ServletUsuario extends HttpServlet {
         String senha = request.getParameter("ds_senha");
         String email = request.getParameter("ds_email");
         String cpfXaBlau = request.getParameter("nr_cpf");
-        cpfXaBlau = cpfXaBlau.replaceAll("-", ""); cpfXaBlau = cpfXaBlau.replaceAll("\\.", "");
+        System.out.println(nome+senha+email+cpfXaBlau);
+        //cpfXaBlau = cpfXaBlau.replaceAll("-", ""); cpfXaBlau = cpfXaBlau.replaceAll("\\.", "");
 
         //Cria instancia do usuario
         Usuario usuario = new Usuario();        

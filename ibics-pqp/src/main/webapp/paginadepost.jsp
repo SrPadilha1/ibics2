@@ -48,7 +48,7 @@
             <a href="#Filosofia">Filosofia</a>
             <a href="#Inglês">Inglês</a>
             <a href="#Espanhol">Espanhol</a>
-            
+
             <div align="right">
                 <a href="usuarioperfil.jsp">PERFIL</a>
             </div>
@@ -78,7 +78,7 @@
                     String codigo = p.getIdPostagem().toString();
                     byte[] imagem = p.getFoto();
                     String foto = Base64.getEncoder().encodeToString(imagem);
-%>
+            %>
             <div align="center">
                 <a><%=p.getTitulo()%></a><br>            
                 <a><%=usuario.getNmNome()%>, </a><br><br>
@@ -102,6 +102,18 @@
             <%
                 }
             %>
+            <form method="POST" action="ServletDenuncia">
+                <div class="col-12">
+                    <textarea name="descricao" id="demo-message" placeholder="Descreva sua denúncia" rows="6"></textarea>
+                </div>
+                <div hidden>
+                    <input type="text" name="denunciante" value="<%=usuario.getIdUsuario()%>">
+                    <input type="text" name="postagem" value="<%=p.getIdPostagem()%>">
+                    <input type="text" name="pid" value="">
+                </div>
+                <br>
+                <input type="submit" class="button" value="Denunciar">
+            </form>
             <br><br><br>
             <%}%>
 

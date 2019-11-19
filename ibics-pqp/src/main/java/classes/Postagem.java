@@ -48,6 +48,8 @@ public class Postagem implements Serializable {
     @Lob
     @Column(name = "foto")
     private byte[] foto;
+    @OneToMany(mappedBy = "postagem")
+    private Collection<Denuncia> denunciaCollection;
     
     @OneToMany(mappedBy = "idPostagem")
     private Collection<Comentario> comentarioCollection;
@@ -170,6 +172,16 @@ public class Postagem implements Serializable {
         return "classes.Postagem[ idPostagem=" + idPostagem + " ]";
     }
 
+
+    @XmlTransient
+    public Collection<Comentario> getComentarioCollection() {
+        return comentarioCollection;
+    }
+
+    public void setComentarioCollection(Collection<Comentario> comentarioCollection) {
+        this.comentarioCollection = comentarioCollection;
+    }
+
     public byte[] getFoto() {
         return foto;
     }
@@ -179,12 +191,12 @@ public class Postagem implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Comentario> getComentarioCollection() {
-        return comentarioCollection;
+    public Collection<Denuncia> getDenunciaCollection() {
+        return denunciaCollection;
     }
 
-    public void setComentarioCollection(Collection<Comentario> comentarioCollection) {
-        this.comentarioCollection = comentarioCollection;
+    public void setDenunciaCollection(Collection<Denuncia> denunciaCollection) {
+        this.denunciaCollection = denunciaCollection;
     }
     
 }

@@ -6,13 +6,21 @@
 package classes;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -26,36 +34,86 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Denuncia.findAll", query = "SELECT d FROM Denuncia d")
-    , @NamedQuery(name = "Denuncia.findByConteudod", query = "SELECT d FROM Denuncia d WHERE d.conteudod = :conteudod")})
+    , @NamedQuery(name = "Denuncia.findByDataHora", query = "SELECT d FROM Denuncia d WHERE d.dataHora = :dataHora")
+    , @NamedQuery(name = "Denuncia.findByDescricao", query = "SELECT d FROM Denuncia d WHERE d.descricao = :descricao")
+    , @NamedQuery(name = "Denuncia.findById", query = "SELECT d FROM Denuncia d WHERE d.id = :id")})
 public class Denuncia implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    @Column(name = "data_hora")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dataHora;
+    
+    @Size(max = 2147483647)
+    @Column(name = "descricao")
+    private String descricao;
+    
     @Id
-    @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 2147483647)
-    @Column(name = "conteudod")
-    private String conteudod;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "meugerador")
+    @SequenceGenerator(name="meugerador", sequenceName = "denuncia_id_postagem_seq")
+    @Column(name = "id")
+    private Integer id;
+    
+    @JoinColumn(name = "postagem", referencedColumnName = "id_postagem")
+    @ManyToOne
+    private Postagem postagem;
+    
+    @JoinColumn(name = "usuario", referencedColumnName = "id_usuario")
+    @ManyToOne
+    private Usuario usuario;
 
     public Denuncia() {
     }
 
-    public Denuncia(String conteudod) {
-        this.conteudod = conteudod;
+    public Denuncia(Integer id) {
+        this.id = id;
     }
 
-    public String getConteudod() {
-        return conteudod;
+    public Date getDataHora() {
+        return dataHora;
     }
 
-    public void setConteudod(String conteudod) {
-        this.conteudod = conteudod;
+    public void setDataHora(Date dataHora) {
+        this.dataHora = dataHora;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Postagem getPostagem() {
+        return postagem;
+    }
+
+    public void setPostagem(Postagem postagem) {
+        this.postagem = postagem;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (conteudod != null ? conteudod.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
@@ -66,7 +124,7 @@ public class Denuncia implements Serializable {
             return false;
         }
         Denuncia other = (Denuncia) object;
-        if ((this.conteudod == null && other.conteudod != null) || (this.conteudod != null && !this.conteudod.equals(other.conteudod))) {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -74,7 +132,7 @@ public class Denuncia implements Serializable {
 
     @Override
     public String toString() {
-        return "classes.Denuncia[ conteudod=" + conteudod + " ]";
+        return "classes.Denuncia[ id=" + id + " ]";
     }
     
 }
