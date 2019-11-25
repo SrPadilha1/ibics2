@@ -125,7 +125,7 @@
                     <input type="text" name="pid" value="">
                 </div>
                 <br>
-                <input type="submit" class="button" value="Denunciar">
+                <input type="submit" class="button" value="Comentar">
             </form>
             <br><br><br>
             <%}%>
