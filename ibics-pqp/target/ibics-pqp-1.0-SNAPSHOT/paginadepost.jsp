@@ -130,8 +130,7 @@
             <br><br><br>
             <%}%>
 
-            <a href="comentar.html" > <button class="w3-button w3-black"> <b>Comentários</b></button></a>
-            <a href="pgdenuncia.html" > <button class="w3-button w3-black"> <b>Denúncia</b></button></a> 
+           
             <p class="w3-clear"></p>
 
 
