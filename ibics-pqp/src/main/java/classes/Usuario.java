@@ -182,9 +182,6 @@ public class Usuario implements Serializable {
         this.comentarioCollection = comentarioCollection;
     }
 
-    public void setId(int parseInt) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     @XmlTransient
     public Collection<Denuncia> getDenunciaCollection() {

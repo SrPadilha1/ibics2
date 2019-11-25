@@ -88,7 +88,7 @@ public class ServletDenuncia extends HttpServlet {
         String idPostagem = request.getParameter("postagem");
         String idDenuncia = request.getParameter("pid");
         
-        usuario.setId(Integer.parseInt(idUsuario));
+        usuario.setIdUsuario(Integer.parseInt(idUsuario));
         postagem.setIdPostagem(Integer.parseInt(idPostagem));
                 
         denuncia.setDescricao(request.getParameter("descricao"));
@@ -110,8 +110,10 @@ public class ServletDenuncia extends HttpServlet {
         Transaction tr = sessionRecheio.beginTransaction();
         sessionRecheio.saveOrUpdate(denuncia);
         tr.commit();
+        
+        DenunciaControle.salvar(denuncia);
 
-        response.sendRedirect("pgdenuncia.html");
+        response.sendRedirect("paginadepost.jsp");
         processRequest(request, response);
     }
 

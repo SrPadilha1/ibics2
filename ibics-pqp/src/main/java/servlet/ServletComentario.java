@@ -77,24 +77,32 @@ public class ServletComentario extends HttpServlet {
             throws ServletException, IOException {
         
 
-        Comentario comentario = new Comentario();
+        String descComentario = request.getParameter("comentario");
+        String idUsuario = request.getParameter("comentarista");
+        String idPostagem = request.getParameter("postagem");
+        String idComentario = request.getParameter("pid");
         
-        comentario.setComentario(request.getParameter("comentario"));
-        
-        String idUsuario = request.getParameter("idUsuario");
-        Integer idUser = Integer.parseInt(idUsuario);
-        
-        Usuario usuario = new Usuario(idUser);
+        Usuario usuario = new Usuario(Integer.parseInt(idUsuario));
+        Postagem postagem = new Postagem(Integer.parseInt(idPostagem));
 
-        Date agora = new Date();
-        comentario.setDataHora(agora);
+        Comentario comentario = new Comentario();
         comentario.setIdUsuario(usuario);
+        comentario.setIdPostagem(postagem);
+        comentario.setComentario(descComentario);
+        
+        if(!idComentario.isEmpty()){
+            Integer id = Integer.parseInt(idComentario);
+            comentario.setIdComentario(id);
+        }
+        
         
         Session sessionRecheio;
         sessionRecheio = HibernateUtil.getSession();
         Transaction tr = sessionRecheio.beginTransaction();
         sessionRecheio.saveOrUpdate(comentario);
         tr.commit();
+        
+        ComentarioControle.salvar(comentario);
 
         response.sendRedirect("paginadepost.jsp");
         processRequest(request, response);

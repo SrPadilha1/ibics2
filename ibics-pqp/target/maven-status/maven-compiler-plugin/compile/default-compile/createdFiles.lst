@@ -1,3 +1,4 @@
+servlet/ComentarioControle.class
 classes/Comentario.class
 servlet/ControlePostagem.class
 classes/Postagem.class
@@ -6,6 +7,7 @@ classes/Denuncia.class
 servlet/Logout.class
 servlet/ServletUsuario.class
 servlet/ServletPostagem.class
+servlet/DenunciaControle.class
 classes/Usuario.class
 util/HibernateUtil.class
 servlet/ServletDenuncia.class

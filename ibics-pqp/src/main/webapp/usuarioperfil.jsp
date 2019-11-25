@@ -1,3 +1,4 @@
+<%@page import="servlet.DenunciaControle"%>
 <%@page import="java.util.Base64"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.List"%>
@@ -65,44 +66,59 @@
                             <div id="left">
                                 <img src="avatar.jpg" width="90%" style="border-radius: 10000px;">
                             </div>
-
                             Nome: <%=usuario.getNmNome()%><br><br>
                             E-mail: <%=usuario.getDsEmail()%><br><br>
-
                         </div>
                     </section>
                 </div>
+                <%
+                    if (usuario.getAdmin() == true) {
+                %>
+                <h1>Denúncias</h1>
+                <% List< Denuncia> lista = DenunciaControle.listar();
+                    for (Iterator it = lista.iterator(); it.hasNext();) {
+                        Denuncia denuncia = (Denuncia) it.next();
+                        String codigo = denuncia.getId().toString();
+                        Usuario denunciante = denuncia.getUsuario();
+                %>
+                <a><%=denunciante.getNmNome()%> fez uma denúncia:
+                    <a><%=denuncia.getDescricao()%></a><br>
+                    <%
+                            }
+                        }
+                    %>
+                    </div>
+                    <br>
+
+                    <!-- Sidebar -->
+                    <div id="sidebar">
+                        <div class="inner">
+
+                            <!-- Section -->
+                            <section>
+                                <header class="major">
+                                    <h2>Fale conosco!</h2>
+                                </header>
+                                <p>Em caso de dúvidas, entre em contato.</p>
+                                <ul class="contact">
+                                    <li class="fa-envelope-o"><a href="#">ibics@gmail.com</a></li>
+                                    <li class="fa-phone">(22)00000-0000</li>
+                                    <li class="fa-home"> Quissamã <br />
+                                        RJ, Brasil</li>
+                                </ul>
+                            </section>
+                        </div>
+                    </div>
             </div>
+
+            <a  href = "perfilEdit.jsp" > <button class= "botão w3 w3-black " > <b> Editar Perfil </b></button> </a>
+
+
+            <footer class="w3-container w3-green" style="padding:32px">
+                <a href="#" class="w3-button w3-black w3-padding-large w3-margin-bottom"><i class="fa fa-arrow-up w3-margin-right"></i>Inicio</a>
+
+            </footer>
+
             <br>
-            <!-- Sidebar -->
-            <div id="sidebar">
-                <div class="inner">
-
-                    <!-- Section -->
-                    <section>
-                        <header class="major">
-                            <h2>Fale conosco!</h2>
-                        </header>
-                        <p>Em caso de dúvidas, entre em contato.</p>
-                        <ul class="contact">
-                            <li class="fa-envelope-o"><a href="#">ibics@gmail.com</a></li>
-                            <li class="fa-phone">(22)00000-0000</li>
-                            <li class="fa-home"> Quissamã <br />
-                                RJ, Brasil</li>
-                        </ul>
-                    </section>
-                </div>
-            </div>
-        </div>
-
-        <a  href = "perfilEdit.jsp" > <button class= "botão w3 w3-black " > <b> Editar Perfil </b></button> </a>
-
-
-        <footer class="w3-container w3-green" style="padding:32px">
-            <a href="#" class="w3-button w3-black w3-padding-large w3-margin-bottom"><i class="fa fa-arrow-up w3-margin-right"></i>Inicio</a>
-
-        </footer>
-
-        <br>
-    </body>
-</html>
+            </body>
+            </html>

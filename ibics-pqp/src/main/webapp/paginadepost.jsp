@@ -114,6 +114,18 @@
                 <br>
                 <input type="submit" class="button" value="Denunciar">
             </form>
+            <form method="POST" action="ServletComentario">
+                <div class="col-12">
+                    <textarea name="comentario" id="demo-message" placeholder="Descreva seu comentário" rows="6"></textarea>
+                </div>
+                <div hidden>
+                    <input type="text" name="comentarista" value="<%=usuario.getIdUsuario()%>">
+                    <input type="text" name="postagem" value="<%=p.getIdPostagem()%>">
+                    <input type="text" name="pid" value="">
+                </div>
+                <br>
+                <input type="submit" class="button" value="Denunciar">
+            </form>
             <br><br><br>
             <%}%>
 
