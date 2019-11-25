@@ -78,10 +78,11 @@
                     String codigo = p.getIdPostagem().toString();
                     byte[] imagem = p.getFoto();
                     String foto = Base64.getEncoder().encodeToString(imagem);
+                    Usuario postador = p.getIdUsuario();
             %>
             <div align="center">
                 <a><%=p.getTitulo()%></a><br>            
-                <a><%=usuario.getNmNome()%>, </a><br><br>
+                <a><%=postador.getNmNome()%>, </a><br><br>
                 <img src="data:image/png;base64,<%=foto%>" width='500' height='400'><br>
                 <a><%=p.getConteudo()%></a><br>              
 

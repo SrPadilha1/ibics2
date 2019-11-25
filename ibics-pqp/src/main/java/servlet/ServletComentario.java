@@ -90,6 +90,9 @@ public class ServletComentario extends HttpServlet {
         comentario.setIdPostagem(postagem);
         comentario.setComentario(descComentario);
         
+        Date agora = new Date();
+        comentario.setDataHora(agora);
+        
         if(!idComentario.isEmpty()){
             Integer id = Integer.parseInt(idComentario);
             comentario.setIdComentario(id);
