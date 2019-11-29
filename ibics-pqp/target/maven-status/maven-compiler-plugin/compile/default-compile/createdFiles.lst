@@ -1,11 +1,14 @@
 servlet/ComentarioControle.class
+classes/Avaliacao.class
 classes/Comentario.class
 servlet/ControlePostagem.class
+servlet/AvaliacaoControle.class
 classes/Postagem.class
 servlet/ServletLogin.class
 classes/Denuncia.class
 servlet/Logout.class
 servlet/ServletUsuario.class
+servlet/ServletAvaliacaoS.class
 servlet/ServletPostagem.class
 servlet/DenunciaControle.class
 classes/Usuario.class

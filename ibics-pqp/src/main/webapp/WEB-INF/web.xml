@@ -25,6 +25,10 @@
         <servlet-name>FotoControle</servlet-name>
         <servlet-class>servlet.FotoControle</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletAvaliacaoS</servlet-name>
+        <servlet-class>servlet.ServletAvaliacaoS</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletPostagem</servlet-name>
         <url-pattern>/ServletPostagem</url-pattern>
@@ -44,6 +48,10 @@
     <servlet-mapping>
         <servlet-name>FotoControle</servlet-name>
         <url-pattern>/FotoControle</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletAvaliacaoS</servlet-name>
+        <url-pattern>/ServletAvaliacaoS</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

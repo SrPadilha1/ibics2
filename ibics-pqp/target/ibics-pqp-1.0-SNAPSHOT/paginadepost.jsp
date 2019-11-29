@@ -2,7 +2,7 @@
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.List"%>
 <%@page import="servlet.ControlePostagem"%>
-<%@page import="classes.Postagem"%>
+<%@page import="classes.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://displaytag.sf.net" prefix="display"%>
 <jsp:directive.page import="classes.*" />
@@ -89,6 +89,25 @@
                 <br><br>
 
             </div>
+
+            <form method="POST" action="ServletAvaliacaoS">
+                <div hidden>
+                    <input name="avaliador" value="<%=usuario.getIdUsuario()%>">
+                    <input name="postagem" value="<%=p.getIdPostagem()%>">
+                    <input name="pid" value="">
+                </div>
+                <%
+                    Avaliacao avaliacao = new Avaliacao();
+                    avaliacao.setAvaliador(usuario);
+                    avaliacao.setPostagem(p);
+                    Boolean like = avaliacao.getLike();
+                    if(like == null || like == false){
+                %>
+                <input type="submit" value="Like" name="like">
+                <%}else{%>
+                <input type="submit" value="Deslike" name="like">
+                <%}%>
+            </form>
             <center> <h3>Comentários</h3>     </center>
 
             <%
@@ -130,7 +149,7 @@
             <br><br><br>
             <%}%>
 
-           
+
             <p class="w3-clear"></p>
 
 

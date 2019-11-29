@@ -1,9 +1,6 @@
 package util;
 
-import classes.Comentario;
-import classes.Denuncia;
-import classes.Postagem;
-import classes.Usuario;
+import classes.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
@@ -35,6 +32,7 @@ public class HibernateUtil {
         cfg.addAnnotatedClass(Usuario.class);
         cfg.addAnnotatedClass(Comentario.class);
         cfg.addAnnotatedClass(Denuncia.class);
+        cfg.addAnnotatedClass(Avaliacao.class);
         factory = cfg.buildSessionFactory();
     }
 
