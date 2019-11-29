@@ -12,6 +12,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import util.HibernateUtil;
 
 /**
  *
@@ -76,6 +79,8 @@ public class ServletAvaliacaoS extends HttpServlet {
         String post = request.getParameter("postagem");
         String idtext = request.getParameter("pid");
         String like = request.getParameter("like");
+        String Like = "Like";
+        String Deslike = "Deslike";
 
         Postagem postagem = new Postagem();
         Usuario usuario = new Usuario();
@@ -86,22 +91,20 @@ public class ServletAvaliacaoS extends HttpServlet {
 
         avaliacao.setAvaliador(usuario);
         avaliacao.setPostagem(postagem);
-        
+
         if (!idtext.isEmpty()) {
             Integer id = Integer.parseInt(idtext);
             avaliacao.setId(id);
         }
-
-        if ("Like".equals(like)) {
-            avaliacao.setLike(true);
-            System.out.println("true");
-        } else {
-            avaliacao.setLike(false);
-            System.out.println("false");
-        }        
+        
+        if(like.equals(Like)){
+            avaliacao.setLike(Boolean.TRUE);
+        } else if (like.equals(Deslike)){
+            avaliacao.setLike(Boolean.FALSE);
+        }
 
         AvaliacaoControle.salvar(avaliacao);
-
+        System.out.println("SALVO");
         response.sendRedirect("paginadepost.jsp");
 
     }
