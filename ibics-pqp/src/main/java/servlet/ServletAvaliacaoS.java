@@ -75,38 +75,32 @@ public class ServletAvaliacaoS extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String avaliador = request.getParameter("avaliador");
-        String post = request.getParameter("postagem");
         String idtext = request.getParameter("pid");
-        String like = request.getParameter("like");
-        String Like = "Like";
-        String Deslike = "Deslike";
+        String idAvaliador = request.getParameter("avaliador");
+        String idPostagem = request.getParameter("postagem");
 
+        Avaliacao avaliacao = new Avaliacao();
         Postagem postagem = new Postagem();
         Usuario usuario = new Usuario();
-        Avaliacao avaliacao = new Avaliacao();
-
-        usuario.setIdUsuario(Integer.parseInt(avaliador));
-        postagem.setIdPostagem(Integer.parseInt(post));
-
-        avaliacao.setAvaliador(usuario);
-        avaliacao.setPostagem(postagem);
 
         if (!idtext.isEmpty()) {
             Integer id = Integer.parseInt(idtext);
             avaliacao.setId(id);
         }
+
+        postagem.setIdPostagem(Integer.parseInt(idPostagem));
+        usuario.setIdUsuario(Integer.parseInt(idAvaliador));
+
+        avaliacao.setUsuario(usuario);
+        avaliacao.setPostagem(postagem);
+
+        Session sessionRecheio;
+        sessionRecheio = HibernateUtil.getSession();
+        Transaction tr = sessionRecheio.beginTransaction();
+        sessionRecheio.saveOrUpdate(avaliacao);
+        tr.commit();
         
-        if(like.equals(Like)){
-            avaliacao.setLike(Boolean.TRUE);
-        } else if (like.equals(Deslike)){
-            avaliacao.setLike(Boolean.FALSE);
-        }
-
-        AvaliacaoControle.salvar(avaliacao);
-        System.out.println("SALVO");
         response.sendRedirect("paginadepost.jsp");
-
     }
 
     /**

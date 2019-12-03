@@ -30,8 +30,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Avaliacao.findAll", query = "SELECT a FROM Avaliacao a")
-    , @NamedQuery(name = "Avaliacao.findById", query = "SELECT a FROM Avaliacao a WHERE a.id = :id")
-    , @NamedQuery(name = "Avaliacao.findByLike", query = "SELECT a FROM Avaliacao a WHERE a.like = :like")})
+    , @NamedQuery(name = "Avaliacao.findById", query = "SELECT a FROM Avaliacao a WHERE a.id = :id")})
 public class Avaliacao implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -43,16 +42,13 @@ public class Avaliacao implements Serializable {
     @Column(name = "id")
     private Integer id;
     
-    @Column(name = "like")
-    private Boolean like;
-    
     @JoinColumn(name = "postagem", referencedColumnName = "id_postagem")
     @ManyToOne
     private Postagem postagem;
     
-    @JoinColumn(name = "avaliador", referencedColumnName = "id_usuario")
+    @JoinColumn(name = "usuario", referencedColumnName = "id_usuario")
     @ManyToOne
-    private Usuario avaliador;
+    private Usuario usuario;
 
     public Avaliacao() {
     }
@@ -69,14 +65,6 @@ public class Avaliacao implements Serializable {
         this.id = id;
     }
 
-    public Boolean getLike() {
-        return like;
-    }
-
-    public void setLike(Boolean like) {
-        this.like = like;
-    }
-
     public Postagem getPostagem() {
         return postagem;
     }
@@ -85,12 +73,12 @@ public class Avaliacao implements Serializable {
         this.postagem = postagem;
     }
 
-    public Usuario getAvaliador() {
-        return avaliador;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setAvaliador(Usuario avaliador) {
-        this.avaliador = avaliador;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     @Override

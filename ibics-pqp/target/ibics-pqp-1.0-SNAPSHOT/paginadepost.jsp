@@ -92,21 +92,12 @@
 
             <form method="POST" action="ServletAvaliacaoS">
                 <div hidden>
-                    <input name="avaliador" value="<%=usuario.getIdUsuario()%>">
-                    <input name="postagem" value="<%=p.getIdPostagem()%>">
-                    <input name="pid" value="">
+                    <input type="text" name="avaliador" value="<%=usuario.getIdUsuario()%>">
+                    <input type="text" name="postagem" value="<%=p.getIdPostagem()%>">
+                    <input type="text" name="pid" value="">
                 </div>
-                <%
-                    Avaliacao avaliacao = new Avaliacao();
-                    avaliacao.setAvaliador(usuario);
-                    avaliacao.setPostagem(p);
-                    Boolean like = avaliacao.getLike();
-                    if(like == null || like == false){
-                %>
-                <input type="submit" value="Like" name="like">
-                <%}else{%>
-                <input type="submit" value="Deslike" name="like">
-                <%}%>
+                <br>
+                <input type="submit" class="button" value="Like">
             </form>
             <center> <h3>Comentários</h3>     </center>
 
