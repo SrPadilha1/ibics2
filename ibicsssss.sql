@@ -1,4 +1,4 @@
---
+﻿--
 -- PostgreSQL database dump
 --
 
@@ -232,10 +232,7 @@ ALTER TABLE ONLY denuncia ALTER COLUMN id SET DEFAULT nextval('denuncia_id_posta
 -- Data for Name: avaliacao; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY avaliacao (postagem, usuario, id) FROM stdin;
-750	12	400
-750	12	401
-\.
+
 
 
 --
@@ -244,8 +241,6 @@ COPY avaliacao (postagem, usuario, id) FROM stdin;
 -- Data for Name: comentario; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY comentario (comentario, titulo, data_hora, id_postagem, id_comentario, id_usuario) FROM stdin;
-\.
 
 
 --
@@ -253,9 +248,6 @@ COPY comentario (comentario, titulo, data_hora, id_postagem, id_comentario, id_u
 -- Dependencies: 182
 -- Data for Name: denuncia; Type: TABLE DATA; Schema: public; Owner: postgres
 --
-
-COPY denuncia (usuario, data_hora, descricao, id, postagem) FROM stdin;
-\.
 
 
 --
@@ -272,11 +264,6 @@ SELECT pg_catalog.setval('denuncia_id_postagem_seq', 1, true);
 -- Dependencies: 184
 -- Data for Name: postagem; Type: TABLE DATA; Schema: public; Owner: postgres
 --
-
-COPY postagem (conteudo, titulo, data_hora, id_usuario, id_postagem, foto, extensao) FROM stdin;
-laksdfl	titulo	2019-12-03 15:40:13.894-02	12	750	\\x	application/octet-stream
-\.
-
 
 --
 -- TOC entry 2212 (class 0 OID 0)
@@ -320,8 +307,6 @@ SELECT pg_catalog.setval('sq_usuario', 14, true);
 -- Data for Name: tema; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY tema (cod_tema, cod_subtema, ds_descricao) FROM stdin;
-\.
 
 
 --
@@ -330,9 +315,6 @@ COPY tema (cod_tema, cod_subtema, ds_descricao) FROM stdin;
 -- Data for Name: usuario; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY usuario (ds_email, nm_nome, ds_senha, nr_cpf, id_usuario, admin) FROM stdin;
-maria@gmail.com	maria	000	11111111111	12	t
-\.
 
 
 --
