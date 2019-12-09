@@ -33,6 +33,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Avaliacao.findById", query = "SELECT a FROM Avaliacao a WHERE a.id = :id")})
 public class Avaliacao implements Serializable {
 
+    @Column(name = "valor")
+    private Integer valor;
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -104,6 +107,14 @@ public class Avaliacao implements Serializable {
     @Override
     public String toString() {
         return "classes.Avaliacao[ id=" + id + " ]";
+    }
+
+    public Integer getValor() {
+        return valor;
+    }
+
+    public void setValor(Integer valor) {
+        this.valor = valor;
     }
     
 }

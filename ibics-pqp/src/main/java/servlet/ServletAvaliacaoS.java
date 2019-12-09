@@ -33,20 +33,49 @@ public class ServletAvaliacaoS extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ServletAvaliacaoS</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ServletAvaliacaoS at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        String like = request.getParameter("valor");
+        
+        int num =  Integer.parseInt(like);
+
+        String idtext = request.getParameter("pid");
+        String idAvaliador = request.getParameter("avaliador");
+        String idPostagem = request.getParameter("postagem");
+        System.out.println("valor: "+num);
+        System.out.println("pid:  "+idtext);
+        System.out.println("avaliador:  "+idAvaliador);
+        System.out.println("publicacao:  "+idPostagem);
+
+       
+        
+        Avaliacao avaliacao = new Avaliacao();
+        Postagem postagem = new Postagem();
+        Usuario usuario = new Usuario();
+
+        if (idtext != null && !idtext.isEmpty()) {
+            Integer id = Integer.parseInt(idtext);
+            avaliacao.setId(id);
         }
-    }
+
+        postagem.setIdPostagem(Integer.parseInt(idPostagem));
+        usuario.setIdUsuario(Integer.parseInt(idAvaliador));
+
+        Session sessionRecheio;
+        sessionRecheio = HibernateUtil.getSession();
+        Avaliacao avBD = (Avaliacao) sessionRecheio.createQuery("from Avaliacao where usuario=? and postagem=?").setEntity(0, usuario).setEntity(1, postagem).uniqueResult();
+        
+        if (avBD != null) {
+            avaliacao = avBD;
+        }
+        avaliacao.setUsuario(usuario);
+        avaliacao.setPostagem(postagem);
+        avaliacao.setValor(num);
+
+        Transaction tr = sessionRecheio.beginTransaction();
+        sessionRecheio.saveOrUpdate(avaliacao);
+        tr.commit();
+        
+        response.sendRedirect("paginadepost.jsp");
+        }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -74,33 +103,6 @@ public class ServletAvaliacaoS extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        String idtext = request.getParameter("pid");
-        String idAvaliador = request.getParameter("avaliador");
-        String idPostagem = request.getParameter("postagem");
-
-        Avaliacao avaliacao = new Avaliacao();
-        Postagem postagem = new Postagem();
-        Usuario usuario = new Usuario();
-
-        if (!idtext.isEmpty()) {
-            Integer id = Integer.parseInt(idtext);
-            avaliacao.setId(id);
-        }
-
-        postagem.setIdPostagem(Integer.parseInt(idPostagem));
-        usuario.setIdUsuario(Integer.parseInt(idAvaliador));
-
-        avaliacao.setUsuario(usuario);
-        avaliacao.setPostagem(postagem);
-
-        Session sessionRecheio;
-        sessionRecheio = HibernateUtil.getSession();
-        Transaction tr = sessionRecheio.beginTransaction();
-        sessionRecheio.saveOrUpdate(avaliacao);
-        tr.commit();
-        
-        response.sendRedirect("paginadepost.jsp");
     }
 
     /**

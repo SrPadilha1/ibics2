@@ -89,20 +89,11 @@
                 <br><br>
 
             </div>
-
-            <form method="POST" action="ServletAvaliacaoS">
-                <div hidden>
-                    <input type="text" name="avaliador" value="<%=usuario.getIdUsuario()%>">
-                    <input type="text" name="postagem" value="<%=p.getIdPostagem()%>">
-                    <input type="text" name="pid" value="">
-                </div>
-                <br>
-                <input type="submit" class="button" value="Like">
-            </form>
+            <a href="ServletAvaliacaoS?valor=1&avaliador=<%=usuario.getIdUsuario()%>&postagem=<%=p.getIdPostagem()%>&pid=" class="icon  fa fa-thumbs-o-up"><span class="label">Curtir</span></a>
+            <a href="ServletAvaliacaoS?valor=-1&avaliador=<%=usuario.getIdUsuario()%>&postagem=<%=p.getIdPostagem()%>" class="icon  fa fa-thumbs-o-down"><span class="label">Descurtir</span></a>
             <center> <h3>Comentários</h3>     </center>
 
-            <%
-                for (Comentario c : p.getComentarioCollection()) {
+            <%                for (Comentario c : p.getComentarioCollection()) {
             %>
             <div align="center" style="background: #1abc9c">
                 <a><%=c.getComentario()%></a><br>               
