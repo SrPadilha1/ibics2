@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import util.HibernateUtil;
@@ -34,19 +35,17 @@ public class ServletAvaliacaoS extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String like = request.getParameter("valor");
-        
-        int num =  Integer.parseInt(like);
+
+        int num = Integer.parseInt(like);
 
         String idtext = request.getParameter("pid");
         String idAvaliador = request.getParameter("avaliador");
         String idPostagem = request.getParameter("postagem");
-        System.out.println("valor: "+num);
-        System.out.println("pid:  "+idtext);
-        System.out.println("avaliador:  "+idAvaliador);
-        System.out.println("publicacao:  "+idPostagem);
+        System.out.println("valor: " + num);
+        System.out.println("pid:  " + idtext);
+        System.out.println("avaliador:  " + idAvaliador);
+        System.out.println("publicacao:  " + idPostagem);
 
-       
-        
         Avaliacao avaliacao = new Avaliacao();
         Postagem postagem = new Postagem();
         Usuario usuario = new Usuario();
@@ -62,7 +61,7 @@ public class ServletAvaliacaoS extends HttpServlet {
         Session sessionRecheio;
         sessionRecheio = HibernateUtil.getSession();
         Avaliacao avBD = (Avaliacao) sessionRecheio.createQuery("from Avaliacao where usuario=? and postagem=?").setEntity(0, usuario).setEntity(1, postagem).uniqueResult();
-        
+
         if (avBD != null) {
             avaliacao = avBD;
         }
@@ -73,9 +72,10 @@ public class ServletAvaliacaoS extends HttpServlet {
         Transaction tr = sessionRecheio.beginTransaction();
         sessionRecheio.saveOrUpdate(avaliacao);
         tr.commit();
-        
+        HttpSession httpSession = request.getSession();
+        httpSession.setAttribute("minhaAvaliacao", avaliacao);
         response.sendRedirect("paginadepost.jsp");
-        }
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

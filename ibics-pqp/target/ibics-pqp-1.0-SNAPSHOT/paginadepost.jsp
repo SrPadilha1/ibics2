@@ -28,6 +28,8 @@
         <%
             Usuario usuario = (Usuario) session.getAttribute("UsuarioLogado");
             System.out.println("tem o usuario: " + usuario);
+            Avaliacao avaliacao = (Avaliacao) session.getAttribute("minhaAvaliacao");
+            System.out.println("tem a avaliacao: " + avaliacao);
         %>
     <body class="w3-light-grey">
         <header class="w3-container w3-center w3-padding-48 w3-green">
@@ -89,8 +91,23 @@
                 <br><br>
 
             </div>
-            <a href="ServletAvaliacaoS?valor=1&avaliador=<%=usuario.getIdUsuario()%>&postagem=<%=p.getIdPostagem()%>&pid=" class="icon  fa fa-thumbs-o-up"><span class="label">Curtir</span></a>
-            <a href="ServletAvaliacaoS?valor=-1&avaliador=<%=usuario.getIdUsuario()%>&postagem=<%=p.getIdPostagem()%>" class="icon  fa fa-thumbs-o-down"><span class="label">Descurtir</span></a>
+                <% 
+                    if (avaliacao == null) { 
+                %>
+            <a href="ServletAvaliacaoS?valor=1&avaliador=<%=usuario.getIdUsuario()%>&postagem=<%=p.getIdPostagem()%>&pid=" class="icon  fa fa-thumbs-o-up"><span class="label">Like</span></a>
+            <a href="ServletAvaliacaoS?valor=-1&avaliador=<%=usuario.getIdUsuario()%>&postagem=<%=p.getIdPostagem()%>" class="icon  fa fa-thumbs-o-down"><span class="label">Deslike</span></a>
+            <% } else { 
+                    if (avaliacao.getValor() == -1){
+            %>
+            <a href="ServletAvaliacaoS?valor=1&avaliador=<%=usuario.getIdUsuario()%>&postagem=<%=p.getIdPostagem()%>&pid=" class="icon  fa fa-thumbs-o-up"><span class="label">Like</span></a>
+            <a href="ServletAvaliacaoS?valor=-1&avaliador=<%=usuario.getIdUsuario()%>&postagem=<%=p.getIdPostagem()%>" class="icon  fa fa-thumbs-down"><span class="label">Deslike</span></a>
+            <% }else {%>
+            <a href="ServletAvaliacaoS?valor=1&avaliador=<%=usuario.getIdUsuario()%>&postagem=<%=p.getIdPostagem()%>&pid=" class="icon  fa fa-thumbs-up"><span class="label">Like</span></a>
+            <a href="ServletAvaliacaoS?valor=-1&avaliador=<%=usuario.getIdUsuario()%>&postagem=<%=p.getIdPostagem()%>" class="icon  fa fa-thumbs-o-down"><span class="label">Deslike</span></a>
+            <% }
+            } %>
+            
+            
             <center> <h3>Comentários</h3>     </center>
 
             <%                for (Comentario c : p.getComentarioCollection()) {
